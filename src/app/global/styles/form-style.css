@@ -1,0 +1,242 @@
+.input-label {
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.required::after {
+    content: " *";
+    color: red;
+}
+
+input {
+    transition: all, 0.4s, ease;
+    width: 100%;
+    font-size: 16px;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+input:focus {
+    border: 2px solid #24c7d9;
+}
+
+
+.backdrop {
+    background-color: #2463a780 !important;
+}
+
+select {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+.subtab-modal-body {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 5px;
+}
+
+.hide-long-text {
+    display: block;
+    /* or in-line block according to your requirement */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+hr {
+    height: 2px;
+    background-color: black;
+    border: none;
+}
+
+.table-card {
+    display: block;
+    overflow-x: auto;
+    padding-bottom: 0rem !important;
+    /* margin-bottom:0.25rem !important;*/
+}
+
+.fc-button-group .fc-timeGridDay-button {
+    border-radius: 5px 0px 0px 5px !important;
+    margin-right: 0px !important;
+}
+
+.fc-button-group .fc-timeGridWeek-button {
+    border-radius: 0px 0px 0px 0px !important;
+    margin-right: 0px !important;
+}
+
+.fc-button-group .fc-dayGridMonth-button {
+    border-radius: 0px 5px 5px 0px !important;
+    margin-right: 0px !important;
+}
+
+.fc-button-group .fc-next-button {
+    border-radius: 0px 5px 5px 0px !important;
+    margin-right: 0px !important;
+}
+
+.fc-button-group .fc-prev-button {
+    border-radius: 5px 0px 0px 5px !important;
+    margin-right: 0px !important;
+}
+
+.date-range {
+    border-radius: 0px 5px 5px 0px !important;
+    margin-right: 0px !important;
+}
+
+.calendar-selector {
+    border-radius: 5px 0px 0px 5px !important;
+    margin-right: 0px !important;
+}
+
+button {
+    border-radius: 999px !important;
+    margin-right: 0.25rem !important;
+}
+
+.toggle-filter-button {
+    border-radius: 0px 0px 0px 0px !important;
+    margin-right: 0px !important;
+}
+
+.filter-refresh-button {
+    border-radius: 0px 5px 5px 0px !important;
+    margin-right: 0px !important;
+}
+
+.filter-add-button {
+    border-radius: 0px 5px 5px 0px !important;
+    margin-right: 0px !important;
+}
+
+.table-cell-button {
+    padding: 0px 5px 0px 5px;
+    border-radius: 5px !important;
+    font-size: 0.8rem;
+}
+
+.custom-readonly-input {
+    display: block;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    background-color: #f5f6f8;
+    color: #333;
+    border-radius: 4px;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    min-height: 30px;
+}
+
+.ahashakeheartache {
+    -webkit-animation: kf_shake 0.4s 1 linear;
+    -moz-animation: kf_shake 0.4s 1 linear;
+    -o-animation: kf_shake 0.4s 1 linear;
+    animation: kf_shake 0.4s 1 linear;
+}
+
+@keyframes kf_shake {
+    0% {
+        -webkit-transform: translate(30px);
+    }
+
+    20% {
+        -webkit-transform: translate(-30px);
+    }
+
+    40% {
+        -webkit-transform: translate(15px);
+    }
+
+    60% {
+        -webkit-transform: translate(-15px);
+    }
+
+    80% {
+        -webkit-transform: translate(8px);
+    }
+
+    100% {
+        -webkit-transform: translate(0px);
+    }
+}
+
+@-webkit-keyframes kf_shake {
+    0% {
+        -webkit-transform: translate(30px);
+    }
+
+    20% {
+        -webkit-transform: translate(-30px);
+    }
+
+    40% {
+        -webkit-transform: translate(15px);
+    }
+
+    60% {
+        -webkit-transform: translate(-15px);
+    }
+
+    80% {
+        -webkit-transform: translate(8px);
+    }
+
+    100% {
+        -webkit-transform: translate(0px);
+    }
+}
+
+@-moz-keyframes kf_shake {
+    0% {
+        -moz-transform: translate(30px);
+    }
+
+    20% {
+        -moz-transform: translate(-30px);
+    }
+
+    40% {
+        -moz-transform: translate(15px);
+    }
+
+    60% {
+        -moz-transform: translate(-15px);
+    }
+
+    80% {
+        -moz-transform: translate(8px);
+    }
+
+    100% {
+        -moz-transform: translate(0px);
+    }
+}
+
+@-o-keyframes kf_shake {
+    0% {
+        -o-transform: translate(30px);
+    }
+
+    20% {
+        -o-transform: translate(-30px);
+    }
+
+    40% {
+        -o-transform: translate(15px);
+    }
+
+    60% {
+        -o-transform: translate(-15px);
+    }
+
+    80% {
+        -o-transform: translate(8px);
+    }
+
+    100% {
+        -o-origin-transform: translate(0px);
+    }
+}

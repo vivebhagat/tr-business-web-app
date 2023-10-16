@@ -1,0 +1,17 @@
+<div class="collapsible-strip">
+    <div class="strip-header" (click)="toggleCollapse()">
+      <img src="https://e7.pngegg.com/pngimages/466/87/png-clipart-computer-icons-house-green-home-finder-properties-angle-building.png" height="30px" width="30px">
+      <h3>Property</h3>
+      <span class="arrow" [class.collapsed]="isCollapsed">&#x25BC;</span>
+    </div>
+    <div class="strip-content" [@expandCollapse]="isCollapsed ? 'collapsed' : 'expanded'">
+      <!-- Your input form goes here -->
+      <div class="row">
+        <div class="col-md-3">
+          <label class="required input-label">Name</label><br />
+          <input class="form-control" type="text" />
+        </div>
+      </div>
+    </div>
+  </div>
+  

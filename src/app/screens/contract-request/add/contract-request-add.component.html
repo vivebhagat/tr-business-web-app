@@ -1,0 +1,130 @@
+<div id="layout-wrapper">
+    <sidebar #navbar (toggleNavBar$)="toggleNavBar($event);"></sidebar>
+    <div class="page-content" [ngStyle]="{ 'padding-left': ( sideBarVisible ? '250px' : '0px' )}">
+        <div class="container-fluid">
+            <header id="page-topbar">
+                <topbar (requestNavBarToggle$)="reqeustNavBarToggle($event);"></topbar>
+            </header>
+            <main class="content" style="padding-top:0px !important;padding-left:0px;padding-right:0px;">
+                <div class="row">
+                    <div [ngClass]="{'ahashakeheartache': warnClass}">
+                        <div class="col-md-12">
+                            <div class="alert alert-info alert-dismissible" *ngIf="alertMessage.SuccessMessage">
+                                <button type="button" class="btn-close" (click)="dismissAlert()"
+                                    aria-label="Close"></button>
+                                <div class="alert-message">
+                                    {{alertMessage.SuccessMessage}}
+                                </div>
+                            </div>
+                            <div class="alert alert-danger alert-dismissible" *ngIf="alertMessage.ErrorMessage">
+                                <button type="button" class="btn-close" (click)="dismissAlert()"
+                                    aria-label="Close"></button>
+                                <div class="alert-message">
+                                    {{alertMessage.ErrorMessage}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ngx-spinner bdColor="rgba(0,0,0,0.3)" size="medium" color="#fff" type="square-jelly-box"
+                    [fullScreen]="true"
+                    template="<b><img src=http://rechorderp.com/app/images/loader_cupom.gif height=100px width=100px></b>">
+                    <p style="color: white"> Loading... </p>
+                </ngx-spinner>
+                <a id="back-to-top"></a>
+                <div class="Card">
+                    <div style="padding: 5px;">
+                        <div class="row">
+                            <div class="col-md-6" style="display:flex; align-items: center;">
+                                <h3 class="text-primary  hide-long-text" style="margin:0px">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/2245/2245126.png"
+                                        height="30px" width="30px">
+                                    &nbsp;My Application
+                                </h3>
+
+                            </div>
+                            <div class="col-md-6" style="margin-top: 5px;">
+                                <div class="btn-group" style="float:right;">
+                                    <button class="btn btn-primary" type="button" (click)="add()">Add
+                                        Application</button>
+                                    <button class="btn btn-secondary" (click)="back()">Back</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab" style="overflow-x: auto; overflow-y: hidden; background-color: lightgrey;">
+                        <ul class="nav nav-tabs" style="flex-wrap: nowrap;">
+                            <li [ngClass]="{ 'active': currentTab == o.Value, 'nav-item': true }"
+                                (click)="currentTab = o.Value" *ngFor="let o of tabs; let i = index">
+                                <a class="nav-link" role="tab">
+                                    <span style="white-space:nowrap;">{{o.Name}}</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div *ngIf="currentTab == 'PRIMARY'">
+                            <div class="card" style="padding:10px;">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="required input-label">Property</label><br />
+                                        <select class="form-select" [(ngModel)]="entityData.ContractRequest.PropertyId">
+                                            <option *ngFor="let o of propertyList;" [ngValue]="o.Id">
+                                                {{o.Name}}
+                                            </option>
+                                        </select>
+                                    </div><br />
+                                    <div class="col-md-3">
+                                        <label class="required input-label">Customer</label><br />
+                                        <select class="form-select" [(ngModel)]="entityData.ContractRequest.CustomerId">
+                                            <option *ngFor="let o of customerList;" [ngValue]="o.Id">
+                                                {{o.FirstName}}  {{o.LastName}}
+                                            </option>
+                                        </select>
+                                    </div><br />
+                                    <div class="col-md-3">
+                                        <label class="required input-label">Proposed Purchase Price</label><br />
+                                        <input class="form-control" type="number"
+                                            [(ngModel)]="entityData.ContractRequest.ProposedPurchasePrice" />
+                                    </div><br />
+                                    <div class="col-md-3">
+                                        <label class="required input-label">Status</label><br />
+                                        <select class="form-select" [(ngModel)]="entityData.ContractRequest.Status">
+                                            <option *ngFor="let o of contractRequestStatusList" [ngValue]="o.Item1">
+                                                {{setContractRequestStatus(o.Item1)}}</option>
+                                        </select>
+                                    </div><br />
+                                    <div class="col-md-12">
+                                        <br><label class="input-label"><b><b>Note</b></b></label><br />
+                                        <textarea class="form-control" rows="3" name="description" style="width: 100%;"
+                                            [(ngModel)]="entityData.ContractRequest.Note">
+                                        </textarea>
+                                    </div><br />
+                                    <div class="col-md-3">
+                                        <br>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="available"
+                                                [(ngModel)]="entityData.ContractRequest.IsApproved">
+                                            <label class="form-check-label" for="available">Is Approved</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" style="margin-bottom: 10px;">
+                                <div class="btn-group" style="float:right;">
+                                    <button class="btn btn-primary" type="button" (click)="add()">Add
+                                        Application</button>
+                                    <button class="btn btn-secondary" (click)="back()"
+                                        style="margin-right: 5pt;">Back</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+</div>

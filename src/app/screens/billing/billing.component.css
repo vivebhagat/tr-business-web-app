@@ -1,0 +1,375 @@
+
+
+.right .strip-top {
+  width: calc(50vw + 90px);
+  transform: skewX(20deg) translateX(160px);
+}
+.right .strip-bottom {
+  width: calc(50vw + 40px);
+  transform: skewX(-15deg) translateX(90px);
+}
+
+.billing-card {
+  width: 400px;
+  height: 250px;
+}
+.flip {
+  width: inherit;
+  height: inherit;
+  transition: 0.7s;
+  transform-style: preserve-3d;
+}
+.front,
+.back {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: 15px;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 10px 1px rgba(0,0,0,0.3);
+  backface-visibility: hidden;
+  background-image: linear-gradient(to right, #111, #555);
+  overflow: hidden;
+}
+.front {
+  transform: translateZ(0);
+}
+.strip-bottom,
+.strip-top {
+  position: absolute;
+  right: 0;
+  height: inherit;
+  background-image: linear-gradient(to bottom, #ff6767, #ff4545);
+  box-shadow: 0 0 10px 0px rgba(0,0,0,0.5);
+}
+.strip-bottom {
+  width: 200px;
+  transform: skewX(-15deg) translateX(50px);
+}
+.strip-top {
+  width: 150px;
+  transform: skewX(20deg) translateX(50px);
+}
+.logo {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+}
+.investor {
+  position: relative;
+  top: 30px;
+  left: 25px;
+  text-transform: uppercase;
+}
+.chip {
+  position: relative;
+  top: 60px;
+  left: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 50px;
+  border-radius: 5px;
+  background-image: linear-gradient(to bottom left, #ffecc7, #d0b978);
+  overflow: hidden;
+}
+
+.chip .chip-main {
+  width: 20px;
+  height: 25px;
+  border: 1px solid #333;
+  border-radius: 3px;
+  background-image: linear-gradient(to bottom left, #efdbab);
+  z-index: 1;
+}
+.wave {
+  position: relative;
+  top: 20px;
+  left: 100px;
+}
+.card-number {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 70px 25px 10px;
+  font-size: 23px;
+  font-family: 'cc font', monospace;
+}
+.end {
+  margin-left: 25px;
+  text-transform: uppercase;
+  font-family: 'cc font', monospace;
+}
+.end .end-text {
+  font-size: 9px;
+  color: rgba(255,255,255,0.8);
+}
+.card-holder {
+  margin: 10px 25px;
+  text-transform: uppercase;
+  font-family: 'cc font', monospace;
+}
+.master {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+}
+.master .circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+.master .master-red {
+  background-color: #eb001b;
+}
+.master .master-yellow {
+  margin-left: -10px;
+  background-color: rgba(255,209,0,0.7);
+}
+.card {
+  perspective: 1000;
+}
+
+.back {
+  transform: rotateY(180deg) translateZ(0);
+  background: #9e9e9e;
+}
+.back .strip-black {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: #000;
+}
+.back .ccv {
+  position: absolute;
+  top: 110px;
+  left: 0;
+  right: 0;
+  height: 36px;
+  width: 90%;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 5px;
+  text-align: right;
+  letter-spacing: 1px;
+  color: #000;
+  background: #fff;
+}
+.back .ccv label {
+  display: block;
+  margin: -30px 0 15px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #fff;
+}
+.back .terms {
+  position: absolute;
+  top: 150px;
+  padding: 20px;
+  font-size: 10px;
+  text-align: justify;
+}
+
+
+
+.billing-card {
+    box-shadow: rgba(22, 31, 39, 0.42) 0px 60px 123px -25px, rgba(19, 26, 32, 0.08) 0px 35px 75px -35px;
+    border-radius: 10px;
+    border: 1px solid;
+    border-color: #d5dce2 #d5dce2 #b8c2cc;
+}
+.billing-card:hover {
+    transform: rotate3d(0, 0, 0, 0deg) rotate(0deg);
+}
+
+
+.price {
+    font-size: 20px; 
+  }
+  
+  .currency {
+    font-size: 1.5em; /* 1.5 x parent font size */
+  }
+  
+  .dollars {
+    font-size: 1.5em;
+  }
+  
+  .cents {
+    font-size: 0.75em; /* 0.75 x parent font size */
+  }
+
+  .button-24 {
+    background: #ff4545;
+    border: 1px solid #ff4545;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+  }
+  
+  .button-24:hover,
+  .button-24:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #FF4742;
+  }
+  
+  .button-24:active {
+    opacity: .5;
+  }
+
+
+
+
+  
+
+.header-card {
+    padding:0.5rem 0.5rem!important;
+    margin-bottom: 0.25rem !important;
+}
+
+.filter-footer {
+    margin-top: 10px;   
+}
+
+.filter-panel {
+    margin: 0.5rem !important;
+    padding: 0.5rem !important;
+}
+
+.nav-item.active {
+    border-top: 2px solid black;
+    background-color: whitesmoke;
+}
+
+.nav-item.active span {
+    font-weight: bold;
+    color: black;
+}
+
+.table-responsive .dropdown-menu {
+    position: absolute !important;
+    top: 0% !important;
+    left: 100% !important;
+}
+
+.custom-thead {
+    width: auto;
+    text-transform: capitalize;
+    background-color: lightblue;
+    line-height: 10px;
+}
+
+.custom-tr {
+    white-space: nowrap; 
+    text-align:left;
+}
+
+.custom-th {
+    max-width: 5rem !important;
+    width: 5rem !important;
+}
+
+.table-card {
+    display: block;
+    overflow-x: auto;
+    padding-bottom: 0rem !important;
+    /* margin-bottom:0.25rem !important;*/
+}
+
+
+.c-pill {
+    align-items: center;
+    font-weight: bold;
+    font-size: 14.4px;
+    display: inline-block;
+    height: 100%;
+    white-space: nowrap;
+    width: auto;
+    position: relative;
+    border-radius: 100px;
+    line-height: 1;
+    overflow: hidden;
+    padding: 0px 12px 0px 20px;
+    text-overflow: ellipsis;
+    line-height: 1.25rem;
+    word-break: break-word;
+}
+.c-pill:before {
+    border-radius: 50%;
+    content: '';
+    height: 10px;
+    left: 6px;
+    margin-top: -5px;
+    position: absolute;
+    top: 50%;
+    width: 10px;
+}
+.c-pill--success {
+    background: #b4eda0;
+}
+.c-pill--success:before {
+    background: #6bc167;
+}
+.c-pill--warning {
+    background: #ffebb6;
+}
+.c-pill--warning:before {
+    background: #ffc400;
+}
+
+.c-pill--info {
+    background: #c7cdff;
+}
+
+.c-pill--info:before {
+    background: #3c4fdd;
+}
+
+
+.c-pill--danger:before {
+    background: #e92a2a;
+}
+
+.c-pill--danger {
+    background: #ffbbbb;
+}
+
+.c-pill-text-danger {
+    margin: 0; color: #e92a2a;
+}
+
+.c-pill-text-info {
+    margin: 0; color: #3c4fdd;
+}
+
+.c-pill-text-success {
+    margin: 0; color: #6bc167;
+}
+
+.c-pill-text-warning {
+    margin: 0; color: #ffc400;
+}

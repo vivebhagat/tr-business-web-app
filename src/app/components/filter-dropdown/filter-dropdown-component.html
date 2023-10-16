@@ -1,0 +1,17 @@
+<div class="right-inner-addon">
+   <i class="fa fa-search" *ngIf="!(showSpinner || showScanSpinner)"></i> 
+    <div class="spinner ddicon" *ngIf="showSpinner"></div>
+    <div class="scanspinner ddicon" *ngIf="showScanSpinner"></div>
+    <input type="text"
+        (input)="wait();"
+        [(ngModel)]="searchtext" 
+        [ngClass]="{'error-input': hasError}"
+        class="form-control" style="padding-top: 5px !important;padding-bottom: 5px !important;"  />
+</div>
+<div class="dd-result-div" [hidden]="!showResult">
+    <ul class="ddlist" >
+        <li *ngFor="let o of resultList" (click)="selectResult(o)">{{getTransformValue(o).Name}}</li>
+    </ul>
+    <div class="resultbar" *ngIf="(count >= resultList.length && resultList.length == range)" (click)="loadnNxtSearch()">Next >></div>
+    <div class="resultbar" *ngIf="resultList?.length == 0" >No results found.</div> 
+</div>

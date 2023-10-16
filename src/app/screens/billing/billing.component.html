@@ -1,0 +1,148 @@
+<div id="layout-wrapper">
+    <sidebar #navbar (toggleNavBar$)="toggleNavBar($event);"></sidebar>
+    <div class="page-content" [ngStyle]="{ 'padding-left': ( sideBarVisible ? '250px' : '0px' )}">
+        <div class="container-fluid">
+            <header id="page-topbar">
+                <topbar (requestNavBarToggle$)="reqeustNavBarToggle($event);"></topbar>
+            </header>
+            <ngx-spinner bdColor="rgba(0,0,0,0.3)" size="medium" color="#fff" type="square-jelly-box"
+            [fullScreen]="true"
+            template="<b><img src=http://rechorderp.com/app/images/loader_cupom.gif height=100px width=100px></b>">
+            <p style="color: white"> Loading... </p>
+        </ngx-spinner>
+            <main class="content" style="padding-top:0px !important;padding-left:0px;padding-right:0px;">
+                <div class="card mb-2">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h3 class="text-primary">
+                                    <img width="40" height="40"
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxBhnHwmxdUANCWl-f4MSuJQ9vKkw_S97mCV_Bs1DhoEOwbnEuG3MBLFm7v7XgZcV82d4&usqp=CAU">
+                                    &nbsp;Billing Details
+                                </h3>
+                            </div>
+                            <div class="col-md-3">
+                                <div style="margin-right: 0.5rem; float: right;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div>
+                                <div class="center">
+                                    <div class="card billing-card">
+                                        <div class="flip">
+                                            <div class="front">
+                                                <div class="strip-bottom"></div>
+                                                <div class="strip-top"></div>
+                                                <svg class="logo" width="40" height="40" viewbox="0 0 17.5 16.2">
+                                                    <path
+                                                        d="M3.2 0l5.4 5.6L14.3 0l3.2 3v9L13 16.2V7.8l-4.4 4.1L4.5 8v8.2L0 12V3l3.2-3z"
+                                                        fill="white"></path>
+                                                </svg>
+                                                <div class="investor">Current subscription plan</div>
+                                                <div class="chip">
+                                                    <span class="price">
+                                                        <span class="currency">&dollar;</span>
+                                                        <span class="dollars">2500</span>
+                                                        <span class="cents">.00</span>
+                                                    </span>
+                                                </div>
+
+                                                <div class="card-number">
+                                                    <div class="section">PREMIUM</div>
+                                                </div>
+                                                <div class="end"><a class="btn button-24">View Details</a>
+                                                </div>
+                                                <div class="master">
+                                                    <div class="circle master-red"></div>
+                                                    <div class="circle master-yellow"></div>
+                                                </div>
+                                            </div>
+                                            <div class="back">
+                                                <div class="strip-black"></div>
+                                                <div class="ccv">
+                                                    <label>ccv</label>
+                                                    <div>123</div>
+                                                </div>
+                                                <div class="terms">
+                                                    <p>This card is property of Monzo Bank, Wonderland. Misuse is
+                                                        criminal
+                                                        offence.
+                                                        If found, please return to Monzo Bank or to the nearest bank
+                                                        with
+                                                        MasterCard
+                                                        logo.</p>
+                                                    <p>Use of this card is subject to the credit card agreement.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body table-card">
+                        <table class="table table-striped table-responsive no-footer" id="MainTable" role="grid"
+                            style="display:table;">
+                            <thead class="custom-thead">
+                                <tr class="custom-tr">
+                                    <th class="custom-th">
+                                        Amount
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <th>
+                                        Recipient
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Payment Method
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="paymentHistory.length == 0">
+                                    <td style="text-align: center;" colspan="100%">Table has no records.</td>
+                                </tr>
+                                <tr
+                                    *ngFor="let o of paymentHistory; index as indexOfelement">
+                                    <td>
+                                        <span>
+                                            {{o.Amount  | currency: 'USD'}}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <Span [ngClass]="getStatusColor(o.Status)"> {{o.Status}}</Span>
+                                    </td>
+                                    <td>
+                                        <span>
+                                            {{o.Recipient}}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span>
+                                            {{o.Date}}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span>
+                                            {{o.PaymentMethod}}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+</div>

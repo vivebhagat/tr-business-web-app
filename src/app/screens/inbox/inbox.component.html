@@ -1,0 +1,77 @@
+<div id="layout-wrapper">
+    <sidebar #navbar (toggleNavBar$)="toggleNavBar($event);"></sidebar>
+    <div class="page-content" [ngStyle]="{ 'padding-left': ( sideBarVisible ? '250px' : '0px' )}">
+        <div class="container-fluid">
+            <header id="page-topbar">
+                <topbar (requestNavBarToggle$)="reqeustNavBarToggle($event);"></topbar>
+            </header>
+            <ngx-spinner bdColor="rgba(0,0,0,0.3)" size="medium" color="#fff" type="square-jelly-box"
+            [fullScreen]="true"
+            template="<b><img src=http://rechorderp.com/app/images/loader_cupom.gif height=100px width=100px></b>">
+            <p style="color: white"> Loading... </p>
+        </ngx-spinner>
+            <main class="content" style="padding-top:0px !important;padding-left:0px;padding-right:0px;">
+                <div class="container-fluid p-0">
+                    <div class="card mb-2">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h3 class="text-primary">
+                                        <img width="30" height="30"
+                                            src="https://cdn-icons-png.flaticon.com/128/179/179468.png">
+                                        &nbsp;Inbox
+                                    </h3>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="margin-right: 0.5rem; float: right;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                            </div>
+                        </div>
+                    </div>
+                    <section>
+                        <div>
+                            <div class="radio-group">
+                                <input type="radio" id="all" name="filter" checked (click)="toggleInboxMessage('ALL')">
+                                <label for="all">All</label>
+                                <input type="radio" id="unread" name="filter" (click)="toggleInboxMessage('UNREAD')">
+                                <label for="unread">Unread</label><br>
+                                <input type="radio" id="read" name="filter"(click)="toggleInboxMessage('READ')">
+                                <label for="read">Read</label><br>
+                            </div>
+                            <div class="notification-ui_dd-content" *ngFor="let m of messageList; let $index = index;">
+                                <div class="notification-list notification-list--unread"
+                                    [ngClass]="m.IsRead ? 'notification-list--read' : 'notification-list--unread'">
+                                    <div class="notification-list_content">
+                                        <div class="notification-list_img">
+                                            <img [src]="m.Url" alt="user">
+                                        </div>
+                                        <div class="notification-list_detail">
+                                            <p><b>{{m.Title}}</b></p>
+                                            <p class="text-muted">{{m.Message}}</p>
+                                            <p class="text-muted"><small>{{m.Time}}</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="notification-list_feature-right row">
+                                        <button class="btn btn-sm btn-primary" *ngIf="!m.IsRead" (click)="markAsRead(m.Id)">Mark as read</button>
+                                        <button class="btn btn-sm btn-primary" (click)="reply()"> <i
+                                                class="fa fa-reply"></i>&nbsp;&nbsp;Reply</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>

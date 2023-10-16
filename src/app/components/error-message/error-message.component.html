@@ -1,0 +1,15 @@
+
+<div class="col-md-12">
+    <div class="alert alert-info alert-dismissible" *ngIf="alertMessage.SuccessMessage">
+        <button type="button" class="btn-close" data-dismiss="alert" (click)="dismissAlert()" aria-label="Close"></button>
+        <div class="alert-message">
+            {{ alertMessage.SuccessMessage }}
+        </div>
+    </div>
+    <div class="alert alert-danger alert-dismissible" *ngIf="alertMessage.ErrorMessage">
+        <button type="button" class="btn-close" data-dismiss="alert" (click)="dismissAlert()" aria-label="Close"></button>
+        <div class="alert-message">
+            {{ alertMessage.ErrorMessage }}
+        </div>
+    </div>
+</div>

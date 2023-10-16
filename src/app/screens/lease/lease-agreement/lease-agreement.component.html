@@ -1,0 +1,125 @@
+<div id="layout-wrapper">
+    <sidebar #navbar (toggleNavBar$)="toggleNavBar($event);"></sidebar>
+    <div class="page-content" [ngStyle]="{ 'padding-left': ( sideBarVisible ? '250px' : '0px' )}">
+        <div class="container-fluid">
+            <header id="page-topbar">
+                <topbar (requestNavBarToggle$)="reqeustNavBarToggle($event);"></topbar>
+            </header>
+            <main class="content" style="padding-top:0px !important;padding-left:0px;padding-right:0px;">
+                <ngx-spinner bdColor="rgba(0,0,0,0.3)" size="medium" color="#fff" type="square-jelly-box"
+                    [fullScreen]="true"
+                    template="<b><img src=http://rechorderp.com/app/images/loader_cupom.gif height=100px width=100px></b>">
+                    <p style="color: white"> Loading... </p>
+                </ngx-spinner>
+                <div class="container-fluid p-0">
+                    <div class="card mb-2">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h3 class="text-primary">
+                                        <img width="30" height="30"
+                                            src="https://cdn-icons-png.flaticon.com/512/8898/8898412.png">
+                                        &nbsp;Contracts
+                                    </h3>
+                                </div>
+                                <div class="col-md-5">
+
+                                </div>
+                                <div class="col-md-3">
+                                    <div style="margin-right: 0.5rem; float: right;">
+                                        <button class="btn btn-primary">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body table-card">
+                            <table class="table table-striped table-responsive no-footer" id="MainTable" role="grid"
+                                style="display:table;">
+                                <thead class="custom-thead">
+                                    <tr class="custom-tr">
+                                        <th class="custom-th">
+                                            Action
+                                        </th>
+                                        <th>
+                                            Id
+                                        </th>
+                                        <th *ngFor="let o of leaseAgreementListHeaders">
+                                            {{o.Name}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                        *ngFor="let o of leaseAgreementList; index as indexOfelement">
+                                        <td>
+                                            <i style="margin-right:5pt;font-size:small" class='fas fa-edit'></i>
+                                            <i style="font-size:smaller" class='fas fa-trash-alt'
+                                                style="color: red"></i>
+                                        </td>
+                                        <td><span>{{o.Id}}</span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                {{o.Property.Name}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                {{o.Customer.FirstName}} {{o.Customer.LastName}}
+                                            </span>
+                                        </td>    <td>
+                                            <span>
+                                                {{formatDate(o.LeaseStartDate, 'DATE_ONLY')}}
+                                            </span>
+                                        </td>    <td>
+                                            <span>
+                                                {{o.LeaseTermMonths}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                {{o.Amount | currency: 'USD'}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <input type="checkbox" onclick="return false;" [(ngModel)]="o.IsApproved">
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                <input type="checkbox" onclick="return false;" [(ngModel)]="o.IsRenewable">
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                {{o.RenewedDate}}
+                                            </span>
+                                        </td>    
+                                        <td>
+                                            <span>
+                                                <input type="checkbox" onclick="return false;" [(ngModel)]="o.IsTerminated">
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                {{o.TerminationDate}}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>

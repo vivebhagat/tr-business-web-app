@@ -1,0 +1,373 @@
+<!-- <nav class="navbar navbar-expand navbar-light navbar-bg">
+    <a class="sidebar-toggle d-flex">
+        <i class="hamburger align-self-center"></i>
+    </a>
+    <img src="{{logoURL}}" ng-show="logoURL !=''" style="height:50px;" />
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-nav navbar-align">
+            <li class="nav-item dropdown">
+                <a class="nav-icon dropdown-toggle {{show_alerts?'show':''}}" href="#" id="alertsDropdown"
+                    data-bs-toggle="dropdown" [attr.aria-expanded]="show_alerts" (clic+
+                    .0k)="toggleAlert();">
+                    <div class="position-relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-bell align-middle">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <span class="indicator">{{previousAlertCount + messages.length}}</span>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0 {{show_alerts?'show':''}}"
+                    aria-labelledby="alertsDropdown" data-bs-popper="none">
+                    <div class="dropdown-menu-header">
+                        {{ previousAlertCount + messages.length}} New Notifications
+                    </div>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item" *ngFor="let item of messages| slice:0:5">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-alert-circle text-danger">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                    </svg>
+                                </div>
+                                <div class="col-10">
+                                    <div class="text-dark">{{item.name}}</div>
+                                    <div class="text-muted small mt-1">{{item.message}}</div>
+                                    <div class="text-muted small mt-1">{{item.time}}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-menu-footer">
+                        <a (click)="defaultService.Navigate('/sp-list/alert')" target="_self" class="text-muted">Show
+                            all notifications</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" data-toggle="dropdown">
+                    <i class="align-middle" data-feather="settings"></i>
+                </a>
+                <a class="nav-link dropdown-toggle d-none d-sm-inline-block" data-toggle="dropdown" (click)="toggleAuthMenu();">
+                    <span class="text-dark">Hello {{UserName}}, &nbsp; Role : {{UserRole}} &nbsp;</span>
+                </a>
+                <div *ngIf="UserName" 
+                    class="dropdown-menu dropdown-menu-right {{show_auth_menu? 'show': ''}}">
+                    <a class="dropdown-item" *ngIf="UserName"  
+                        (click)="defaultService.Navigate('/sp-role')">Change Role</a>
+                    <a class="dropdown-item" *ngIf="UserName" (click)="logOut();"><i
+                            class="fa fa-sign-out pull-right"></i> Log Out</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav> -->
+<header id="page-topbar" [style]="resize_style">
+    <div class="navbar-header">
+        <div class="d-flex">
+            <button type="button" (click)="toggleNavbar();"
+                class="btn btn-sm px-3 font-size-16 header-item waves-effect btn">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
+        </div>
+        <div class="d-flex">
+            <!-- LOGO -->
+<!--            <img src="{{logoURL}}" *ngIf="logoURL !=''" style="height:70px; margin: 5px!important;" /> -->
+            <!-- App Search-->
+            <form class="app-search d-none d-lg-block" *ngIf="!isMobile" style="margin-left:100px!important">
+                <div class="position-relative">
+                    <input type="text" class="form-control" placeholder="Search..." style="border: solid 0.5px!important">
+                    <span class="uil-search"></span>
+                </div>
+            </form>
+        </div>
+        <div class="d-flex">
+            <div class="dropdown d-inline-block d-lg-none ms-2">
+                <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="uil-search"></i>
+                </button>
+                <!--   <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-search-dropdown">
+                    
+                    <form class="p-3">
+                        <div class="m-0">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div> -->
+            </div>
+
+            <!---            <div class="dropdown d-inline-block language-switch">
+                <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="assets/images/flags/us.jpg" alt="Header Language" height="16">
+                </button> 
+                <div class="dropdown-menu dropdown-menu-end">
+        
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
+                    </a>
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
+                    </a>
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
+                    </a>
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
+                    </a>
+                </div>
+            </div> -->
+
+            <!--        <div class="dropdown d-none d-lg-inline-block ms-1">
+                <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="dropdown" (click)="toggleFavorite()" aria-haspopup="true" aria-expanded="false">
+                    <i class="uil-apps"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end" *ngIf="show_favorite" >
+                    <div class="px-lg-2">
+                        <div class="row g-0">
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="assets/images/brands/github.png" alt="Github">
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
+                                    <span>Bitbucket</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="assets/images/brands/dribbble.png" alt="dribbble">
+                                    <span>Dribbble</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row g-0">
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="assets/images/brands/dropbox.png" alt="dropbox">
+                                    <span>Dropbox</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="assets/images/brands/mail_chimp.png" alt="mail_chimp">
+                                    <span>Mail Chimp</span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="dropdown-icon-item" href="#">
+                                    <img src="assets/images/brands/slack.png" alt="slack">
+                                    <span>Slack</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="dropdown d-none d-lg-inline-block ms-1" *ngIf="!isMobile">
+                <button type="button" class="btn header-item noti-icon waves-effect" *ngIf="isFullScreen"
+                    (click)="closeFullscreen()" data-bs-toggle="fullscreen">
+                    <i class="uil-minus-path fullscreen"></i>
+                </button>
+                <button type="button" class="btn header-item noti-icon waves-effect" *ngIf="!isFullScreen"
+                    (click)="openFullscreen()" data-bs-toggle="fullscreen">
+                    <i class="uil-minus-path"></i>
+                </button>
+            </div>
+
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item noti-icon waves-effect"
+                    id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" (click)="showAlerts()">
+                    <i class="uil-bell"></i>
+                    <span class="badge bg-danger rounded-pill">{{alertCount}}</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                    aria-labelledby="page-header-notifications-dropdown" *ngIf="showAlertDetails" style="display:block;   box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+                        transform: translate3d(0px, -1px, 0px);">
+                    <div class="p-3">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="alert-header">
+                                    {{alertCount}} New Notifications
+                                </div>
+                            </div>
+                            <div class="list-group">
+                                <a class="list-group-item" *ngFor="let item of messages.slice(0, 5) index as indexOfelement;">
+                                    <div class="p-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-2 mr-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-alert-circle text-danger">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                                </svg>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="text-dark small"><b>{{item.Name}}</b></div>
+                                                <ng-container *ngIf="item.Body">
+                                                    <ng-container *ngIf="parseJsonBody(item.Body).Status; else otherContent">
+                                                        <div class="text-muted small"> {{ parseJsonBody(item.Body).Status }}</div>
+                                                    </ng-container>
+                                                    <ng-template #otherContent>
+                                                        {{ parseJsonBody(item.Body) }}
+                                                    </ng-template>
+                                                </ng-container>                                                
+                                                <div class="text-muted small" *ngIf="!item.Body">Empty messaage</div>
+                                                <div class="text-muted small">{{formatDate(item.SentDate)}}</div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div (click)="clearMessage(indexOfelement)">clear </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div data-simplebar="init" style="max-height: 230px;"><div class="simplebar-wrapper" 
+                        style="margin: 0px;">
+                        <div class="simplebar-height-auto-observer-wrapper">
+                            <div class="simplebar-height-auto-observer">
+                            </div></div><div class="simplebar-mask">
+                                <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                    <div class="simplebar-content-wrapper" 
+                                    style="height: auto; overflow: hidden; padding-right: 0px; padding-bottom: 0px;">
+                                    <div class="simplebar-content" style="padding: 0px;">
+                        <a href="" class="text-reset notification-item">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-xs">
+                                        <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                            <i class="uil-shopping-basket"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">Your order is placed</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-1">If several languages coalesce the grammar</p>
+                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="" class="text-reset notification-item">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 me-3">
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">James Lemire</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-1">It will seem like simplified English.</p>
+                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 1 hours ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="" class="text-reset notification-item">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar-xs">
+                                        <span class="avatar-title bg-success rounded-circle font-size-16">
+                                            <i class="uil-truck"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">Your item is shipped</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-1">If several languages coalesce the grammar</p>
+                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="" class="text-reset notification-item">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 me-3">
+                                    <img src="assets/images/default-avtar.png" class="rounded-circle avatar-xs" alt="user-pic">
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-1">Salena Layfield</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-1">As a skeptical Cambridge friend of mine occidental.</p>
+                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 1 hours ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div>
+                </div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                    <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); ">
+                    </div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+                        <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px);">
+                        </div></div></div>-->
+                    <div class="p-2 border-top">
+                        <div class="d-grid">
+                            <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)" (click)="goToAlert()">
+                                <i class="uil-arrow-circle-right me-1"></i> View More..
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Insert here-->
+
+            <div class="dropdown d-inline-block" *ngIf="!isMobile">
+                <img class="rounded-circle header-profile-user" style="margin-left:0.5rem; margin-right: 0.5rem;width:50px!important;height:50px!important"
+                [src]="profileImage ? profileImage : defaultProfileImage" alt="Header Avatar">
+                <button type="button" style="border: 0px" class="btn header-item waves-effect show" id="page-header-user-dropdown" aria-haspopup="true" aria-expanded="true" (click)="toggleAuthMenu();">
+                    <span class="d-none d-xl-inline-block ms-1 fw-medium font-size-15">Hello, {{UserName}} &nbsp; <br />
+                        Role: {{UserRole}}</span>
+                    <i class="uil-angle-down d-none d-xl-inline-block font-size-15"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end show" *ngIf="show_auth_menu"
+                    style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(-85px, 72px);"
+                    data-popper-placement="bottom-end">
+                    <!-- item-->
+                    <a class="dropdown-item" href="#"><i
+                            class="uil uil-user-circle font-size-18 align-middle text-muted me-1"></i> <span
+                            class="align-middle">View Profile</span></a>
+                    <!--                    <a class="dropdown-item" href="#"><i class="uil uil-wallet font-size-18 align-middle me-1 text-muted"></i> <span class="align-middle">My Wallet</span></a> -->
+                    <a class="dropdown-item d-block" href="#"><i
+                            class="uil uil-cog font-size-18 align-middle me-1 text-muted"></i> <span
+                            class="align-middle">Settings</span> <span
+                            class="badge bg-soft-success rounded-pill mt-1 ms-2">03</span></a>
+                    <a class="dropdown-item" *ngIf="UserName" (click)="changeRole()">
+                        <i class="uil uil-lock-alt font-size-18 align-middle me-1 text-muted"></i> <span
+                            class="align-middle">Change Role</span>
+                    </a>
+                    <div (click)="logout();" class="dropdown-item" *ngIf="UserName" >
+                        <i class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span
+                            class="align-middle">Sign out</span></div>
+                </div>
+            </div>
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                    <i class="uil-cog"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>

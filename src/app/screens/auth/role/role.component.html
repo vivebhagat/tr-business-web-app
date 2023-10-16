@@ -1,0 +1,49 @@
+<div class="top_bg">
+<ngx-spinner bdColor="rgba(0,0,0,0.3)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true"
+    template="<b><img src=http://rechorderp.com/app/images/loader_cupom.gif height=100px width=100px></b>">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+<div class="select_center">
+    <div class="text-center mt-2">
+        <h5 class="text-white" *ngIf="!selectedDomain && !isAuthorized">Select Domain</h5>
+        <h5 class="text-white" *ngIf="selectedDomain && !isAuthorized">Select Role</h5>
+    </div>
+    <div class="select_mate" *ngIf="!selectedDomain && !isAuthorized">
+        <select class="form-control" style="width: 300px; height: 50px;" [(ngModel)]="selectedDomain"
+            (change)="selectAndSetDomain(selectedDomain)">
+            <option [ngValue]="undefined" disabled>Select Domain...</option>
+            <option *ngFor="let o of domainList" [ngValue]="o">{{o.DomainKey.Name}}</option>
+        </select>
+    </div>
+    <div class="select_mate" *ngIf="selectedDomain && !isAuthorized">
+        <select class="form-control" style="width: 300px; height: 50px;" [(ngModel)]="selectedRole"
+            (change)="selectAndSetRole(selectedRole)">
+            <option [ngValue]="''" disabled>Select Role...</option>
+            <option *ngFor="let o of roleList" [ngValue]="o.Role.Name">{{o.Role.Name}}</option>
+        </select>
+    </div>
+    <div class="select_mate" *ngIf="isAuthorized" style="    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 10px; margin-top: 20px;">
+        <h5 class="text-black">Selected Domain: {{selectedDomain.DomainKey.Name}}</h5>
+
+        <h5 class="text-black">Selected Role: {{selectedRole}}</h5>
+    </div>
+    <div class="alert alert-info alert-dismissible" *ngIf="alertMessage.SuccessMessage">
+        <small class="alert-message">{{alertMessage.SuccessMessage}}</small>
+    </div>
+</div>
+<div class="row" style="margin: 5px">
+    <div>
+        <div class="col-md-12">
+            <div class="alert alert-danger alert-dismissible" *ngIf="alertMessage.ErrorMessage">
+                <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
+                <div class="alert-message" style="color: red;">
+                    {{alertMessage.ErrorMessage}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

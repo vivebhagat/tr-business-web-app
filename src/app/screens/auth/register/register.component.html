@@ -1,0 +1,77 @@
+<div class="authentication-bg">
+    <div class="account-pages my-5 pt-sm-5">
+        <div class="row align-items-center justify-content-center">
+            <div class="container">
+                <div class="title">Signup Form</div>
+                <div class="content"  [ngClass]="{'ahashakeheartache': warnClass}">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details required">First Name</span>
+                            <input type="text" class="form-control" (ngModelChange)="getUserName()"
+                             [class.is-invalid]="!isFirstNameValid" (focus)="onFocus($event)"
+                            [(ngModel)]="entityData.BusinessUser.FirstName" placeholder="Enter your first name">
+                        </div>
+                        <div class="input-box">
+                            <span class="details required">Last Name</span>
+                            <input type="text" class="form-control" (ngModelChange)="getUserName()" 
+                            [class.is-invalid]="!isLastNameValid" (focus)="onFocus($event)"
+                             [(ngModel)]="entityData.BusinessUser.LastName" placeholder="Enter your last name">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Username</span>
+                            <input type="text" class="form-control" 
+                            [(ngModel)]="entityData.BusinessUser.UserName" placeholder="Enter your username" [readOnly]="true">
+                        </div>
+                        <div class="input-box">
+                            <span class="details required">Email</span>
+                            <input type="text" class="form-control" (focus)="onFocus($event)"  [class.is-invalid]="!isEmailValid"
+                             [(ngModel)]="entityData.BusinessUser.Email" placeholder="Enter your email">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Mobile Number</span>
+                            <input type="text" class="form-control"  placeholder="Enter your number">
+                        </div>
+                        <div class="input-box">
+                            <span class="details required">Password</span>
+                            <input type="text" class="form-control" (focus)="onFocus($event)" [class.is-invalid]="!isPasswordValid"
+                             [(ngModel)]="entityData.BusinessUser.Password" placeholder="Enter your password" required>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <button type="button" class="submit-button" value="Register" (click)="register()">Signup</button>
+                    </div>
+                    <div class="row">
+                        <div>
+                            <div class="col-md-12">
+                                <div class="alert alert-info alert-dismissible" *ngIf="alertMessage.SuccessMessage">
+                                    <button type="button" class="btn-close" (click)="dismissAlert()"
+                                        aria-label="Close"></button>
+                                    <div class="alert-message">
+                                        {{alertMessage.SuccessMessage}}
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger alert-dismissible" *ngIf="alertMessage.ErrorMessage">
+                                    <button type="button" class="btn-close" (click)="dismissAlert()"
+                                        aria-label="Close"></button>
+                                    <div class="alert-message">
+                                        {{alertMessage.ErrorMessage}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 text-center">
+                        <p class="mb-0">Already have an account? <a href="login" class="fw-medium text-primary"> Login
+                            </a> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 text-center">
+                <p class="footertext">
+                    ©
+                    <script>document.write(new Date().getFullYear())</script>2021 Rechord ERP. Developed by ECSATECH
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
