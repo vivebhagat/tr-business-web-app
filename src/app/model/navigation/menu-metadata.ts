@@ -13,7 +13,7 @@ export const MenuDataList : MenuData[] = [
       pageName: "Sales",
       expanded: false,
       menus: [
-        { name: "My Applications", url: "my-applications", selected: false, data: '' },
+        { name: "Applications", url: "applications", selected: false, data: '' },
         { name: "Contracts", url: "contracts", selected: false, data: '' },
       ],
     },
@@ -38,6 +38,7 @@ export const MenuDataList : MenuData[] = [
       menus: [
         { name: "Profile", url: "profile", selected: false, data: '' },
         { name: "Inbox", url: "inbox", selected: false, data: '' },
+        { name: "Organization", url: "organization", selected: false, data: '' },
       ],
     },
   ];

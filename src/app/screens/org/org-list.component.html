@@ -18,8 +18,8 @@
                                 <div class="col-md-4">
                                     <h3 class="text-primary">
                                         <img width="40" height="40"
-                                            src="https://cdn-icons-png.flaticon.com/512/5151/5151145.png">
-                                        &nbsp;Member Roles
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-wM_GK6aQctmMghHJjd1rMjuVrx5W7vvYKBwlGOoh9-4NVJAOL1FLxpFvQW61tZiMCzw&usqp=CAU">
+                                        &nbsp;Organization
                                     </h3>
                                 </div>
                                 <div class="col-md-5">
@@ -27,7 +27,6 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div style="margin-right: 0.5rem; float: right;">
-                                        <button class="btn btn-primary" (click)="showModal(0,'Add')">Add</button>
                                     </div>
                                 </div>
                             </div>
@@ -47,25 +46,18 @@
                                         <th class="custom-th">
                                             Action
                                         </th>
-                                        <th>
-                                            Id
-                                        </th>
-                                        <th *ngFor="let o of memberRoleListHeaders">
+                                        <th *ngFor="let o of organizationListHeaders">
                                             {{o.Name}}
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngIf="memberRoleList.length == 0">
+                                    <tr *ngIf="organizationList.length == 0">
                                         <td style="text-align: center;" colspan="100%">Table has no records.</td>
                                     </tr>
-                                    <tr *ngFor="let o of memberRoleList; index as indexOfelement">
+                                    <tr *ngFor="let o of organizationList; index as indexOfelement">
                                         <td>
                                             <i style="margin-right:5pt;font-size:small" class='fas fa-edit' (click)="showModal(indexOfelement,'Edit')"></i>
-                                            <i style="font-size:smaller" class='fas fa-trash-alt'
-                                                style="color: red"></i>
-                                        </td>
-                                        <td><span>{{o.Id}}</span>
                                         </td>
                                         <td>
                                             <span>
@@ -85,7 +77,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <h2 *ngIf="modelId == 0">{{action}}</h2>
-                                                <h2 *ngIf="modelId != 0">{{action}}: {{entityData.BusinessUserRole.Id}}</h2>
+                                                <h2 *ngIf="modelId != 0">{{action}}: {{entityData.Organization.Id}}</h2>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="btn-group" style="float:right;">
@@ -119,9 +111,17 @@
                                             <div class="form-horizontal">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-md-12 text-lable">
-                                                                <label class="required input-label">Name</label><br />
-                                                                <input type="text" class="form-control" [(ngModel)]="entityData.BusinessUserRole.Name">
+                                                        <div class="col-lg-12 text-lable">
+                                                            <label class="required input-label">Name</label><br />
+                                                            <input type="text" class="form-control" [(ngModel)]="entityData.Organization.Name">
+                                                        </div><br />
+                                                        <div class="col-lg-12 text-lable">
+                                                            <bR><label class="required input-label">Description</label><br />
+                                                            <textarea type="text" class="form-control" [(ngModel)]="entityData.Organization.Description"></textarea>
+                                                        </div><br />
+                                                        <div class="col-lg-12 text-lable">
+                                                            <bR><label class="required input-label">Image Url</label><br />
+                                                            <input type="text" class="form-control" [(ngModel)]="entityData.Organization.Url">
                                                         </div><br />
                                                     </div>
                                                 </div>

@@ -20,6 +20,7 @@ import { ContractRequestEditComponent } from './screens/contract-request/edit/co
 import { RegisterComponent } from './screens/auth/register/register.component';
 import { BusinessUserAddComponent } from './screens/business-user/add/business-user-add.component';
 import { BusinessUserEditComponent } from './screens/business-user/edit/business-user-edit.component';
+import { OrganizationListComponent } from './screens/org/org-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, 
@@ -28,7 +29,7 @@ const routes: Routes = [
   { path: 'role', component: RoleComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'property-list', component: PropertyListComponent },
-  { path: 'my-applications', component: ContractRequestListComponent },
+  { path: 'applications', component: ContractRequestListComponent },
   { path: 'contracts', component: LeaseAgreementComponent },
   { path: 'property-add', component: PropertyAddComponent },
   { path: 'property-edit/:id', component: PropertyEditComponent },
@@ -42,7 +43,7 @@ const routes: Routes = [
   { path: 'billing', component: BillingComponent },
   { path: 'contract-request-add', component: ContractRequestAddComponent },
   { path: 'contract-request-edit/:id', component: ContractRequestEditComponent },
-
+  { path: 'organization', component: OrganizationListComponent },
 ];
 
 @NgModule({

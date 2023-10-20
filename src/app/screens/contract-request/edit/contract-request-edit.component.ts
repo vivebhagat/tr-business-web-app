@@ -12,6 +12,7 @@ import { ContractRequestHelper } from '../helper/contract-request-helper';
 import { CONTRACT_REQUEST_CONSTANTS } from 'src/app/constants/estate/contract-request-constant';
 import { GlobalService } from 'src/app/service/global-service/global-service';
 import { UpdateContractRequest } from 'src/app/model/estate/update-contract-request';
+import { ContarctRequestValidate } from '../validate/contract-request-validate';
 
 @Component({
   selector: 'contract-request-edit',
@@ -37,6 +38,7 @@ export class ContractRequestEditComponent implements OnInit {
   isExpanded: boolean = false;
   contractRequestStatusList: Array<any> = [];
   contractRequestHelper: ContractRequestHelper = new ContractRequestHelper;
+  contractRequestValidate: ContarctRequestValidate = new ContarctRequestValidate;
   authData: AuthData = new AuthData;
   propertyList: Array<any> = [];
   customerList: Array<any> = [];
@@ -70,6 +72,13 @@ export class ContractRequestEditComponent implements OnInit {
   dismissAlert() {
     this.alertMessage = new AlertMessage;
     this.modalMessage = '';
+  }
+
+  resetAlert() {
+    this.warnClass = true;
+    setTimeout(() => {
+      this.warnClass = false;
+    }, 1000)
   }
 
   toggleNavBar(event: any) {
@@ -141,6 +150,14 @@ export class ContractRequestEditComponent implements OnInit {
 
   edit() {
     this.dismissAlert();
+    var error = this.contractRequestValidate.validatePrimaryDetails(this.entityData.ContractRequest)
+
+    if(error.length != 0){
+      this.alertMessage.ErrorMessage = error;
+      this.resetAlert();
+      return;
+    } 
+
     this.spinnerService.show();
     this.contractRequestService.editContractRequest(this.entityData).subscribe({
       next: (response) => {

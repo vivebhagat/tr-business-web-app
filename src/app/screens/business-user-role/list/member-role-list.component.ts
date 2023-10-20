@@ -116,7 +116,7 @@ export class MemberRoleListComponent implements OnInit {
       },
       error: (error) => {
         this.spinnerService.hide();
-        this.alertMessage.ErrorMessage = "Error fetching member list";
+        this.alertMessage.ErrorMessage = "There was an error creating role.";
       }
     });
   }
@@ -128,10 +128,11 @@ export class MemberRoleListComponent implements OnInit {
       next: (response) => {
         this.spinnerService.hide();
         this.getAllMemberRoles();
+        this.modalMessage = "Role update successfully."
       },
       error: (error) => {
         this.spinnerService.hide();
-        this.alertMessage.ErrorMessage = "Error fetching member list";
+        this.alertMessage.ErrorMessage = "There was an error updating role";
       }
     });
   }

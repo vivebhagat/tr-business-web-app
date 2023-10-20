@@ -62,6 +62,14 @@ export class AuthService {
         );
     }
 
+    editOrganization(data: any): Observable<any> {
+        return this.http.post<any>(this.baseUrl + '/api/Organization/EditOrganization/', data)
+    }
+
+    getAllOrganizations(): Observable<any> {
+        return this.http.get<any>(this.baseUrl + '/api/Organization/GetAllOrganizations')
+    }
+
     logout(userId: string): Observable<any> {
         return this.http.get<any>(this.baseUrl + '/api/BusinessUser/Logout/' + userId)
     }

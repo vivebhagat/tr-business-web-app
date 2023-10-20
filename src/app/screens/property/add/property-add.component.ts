@@ -47,6 +47,7 @@ export class PropertyAddComponent implements OnInit {
   propertyHelper: PropertyHelper = new PropertyHelper;
   authData: AuthData = new AuthData;
   propertyValidate: PropertyValidate = new PropertyValidate;
+  propertyManagerList: Array<any> = [];
 
 
   @ViewChild('navbar')
@@ -62,6 +63,7 @@ export class PropertyAddComponent implements OnInit {
   ngOnInit() {
     this.getPropertyType();
     this.getPropertyStatus();
+    this.getProeprtyManagerList();
   }
 
   dismissAlert() {
@@ -96,6 +98,15 @@ export class PropertyAddComponent implements OnInit {
     });
   }
 
+  getProeprtyManagerList() {
+    this.propertyService.getPropertyManagerList().subscribe({
+      next: (response) => {
+        this.propertyManagerList = response;
+      },
+      error: (error) => {
+      }
+    });
+  }
 
   setPropertyStatus(status: any): string {
     return this.propertyHelper.getPropertyStatusString(Number(status));
@@ -148,6 +159,7 @@ export class PropertyAddComponent implements OnInit {
   }
 
   add() {
+    this.dismissAlert();
     var error = this.propertyValidate.validatePrimaryDetails(this.entityData.Property)
 
     if (error.length != 0) {
@@ -156,7 +168,6 @@ export class PropertyAddComponent implements OnInit {
       return;
     }
 
-    this.dismissAlert();
     this.spinnerService.show();
     this.propertyService.addProperty(this.entityData).subscribe({
       next: (response) => {

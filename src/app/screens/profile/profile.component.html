@@ -35,7 +35,7 @@
                     <!-- Top navbar -->
                     <!-- Header -->
                     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-                        style="min-height: 600px; background-image: url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+                        style="min-height: 600px; background-image: url(https://cdn.pixabay.com/photo/2018/11/13/22/01/avatar-3814081_640.png); background-size: cover; background-position: center top;">
                         <!-- Mask -->
                         <span class="mask bg-gradient-default opacity-8"></span>
                         <!-- Header container -->
@@ -97,12 +97,10 @@
                                                 <i class="ni location_pin mr-2"></i>{{entityData.BusinessUser.Address}}
                                             </div>
                                             <div class="h5 mt-4">
-                                                <i class="ni business_briefcase-24 mr-2"></i>Manager - Trilineas
+                                                <i class="ni business_briefcase-24 mr-2"></i>{{role}} - {{organization.Name}}
                                             </div>
                                             <hr class="my-4">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                                since the 1500s.</p>
+                                            <p>{{organization.Description}}</p>
                                             <a style="color: blue;">Show more</a>
                                         </div>
                                     </div>

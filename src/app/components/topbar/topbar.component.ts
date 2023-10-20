@@ -45,7 +45,7 @@ export class TopBarComponent implements OnInit {
         this.UserName = this.authService.getAuthData()!.UserName;
       }
       this.UserRole = this.authService.getAuthData()!.RoleName;
-      this.logoURL = "https://static.thenounproject.com/png/778835-200.png"; // .replace('statics', 'statics/'+ this.authService._authData.domainkey );
+      this.logoURL = "http://api-csportal.trilineas.com/files/logo/trilineas-logo.png"; // .replace('statics', 'statics/'+ this.authService._authData.domainkey );
     }
 
     parseJsonBody(body: string): any {

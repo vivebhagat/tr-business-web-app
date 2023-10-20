@@ -106,12 +106,19 @@
                                                     [(ngModel)]="entityData.Property.ConstructionDate" />
                                             </div><br />
                                             <div class="col-md-4">
+                                                <br><label class="required input-label">Manager</label><br />
+                                                <select class="form-select" [(ngModel)]="entityData.Property.PropertyManagerId">
+                                                    <option *ngFor="let o of propertyManagerList" [ngValue]="o.Id">
+                                                        {{o.FirstName}}  {{o.LastName}}</option>
+                                                </select>
+                                            </div><br />
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
                                                 <br><label class="input-label">Beds</label><br />
                                                 <input class="form-control" type="number"
                                                     [(ngModel)]="entityData.Property.Bedrooms" />
                                             </div><br />
-                                        </div>
-                                        <div class="row">
                                             <div class="col-md-4">
                                                 <br><label class="input-label">Baths</label><br />
                                                 <input class="form-control" type="number"

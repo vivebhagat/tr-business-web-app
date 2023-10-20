@@ -22,6 +22,10 @@ export class PropertyService {
         return this.http.get<any>(this.baseUrl + '/api/property/GetAllFeaturedProperties')
     }
 
+    public getPropertyManagerList(): Observable<any> {
+        return this.http.get<any>(this.baseUrl + '/api/BusinessUser/GetAll')
+    }
+
     public addProperty(data: any) {
         return this.http.post<any>(this.baseUrl + '/api/property/AddProperty', data)
             .pipe(map(response => {

@@ -3,6 +3,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { TopBarComponent } from 'src/app/components/topbar/topbar.component';
 import { AlertMessage } from 'src/app/model/alert/alert-message';
 import { AuthData } from 'src/app/model/auth/authData';
+import { Organization } from 'src/app/model/setup/organization';
 import { UpdateBusinessUser } from 'src/app/model/user/update-businessuser';
 import { AuthService } from 'src/app/service/auth/auth-service';
 import { BusinessUserService } from 'src/app/service/user/businessuser-service';
@@ -21,6 +22,8 @@ export class ProfileComponent implements OnInit {
   authData: AuthData = new AuthData;
   entityData: UpdateBusinessUser = new UpdateBusinessUser;
   warnClass: boolean = false;
+  organization: Organization = new Organization;
+  role: string = '';
 
   @ViewChild('navbar')
   navbar!: TopBarComponent;
@@ -33,6 +36,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.getBusinessUserDetails()
+    this.getAllOrganizations();
+    this.role = this.authData.RoleName;
   }
 
   toggleNavBar(event: any) {
@@ -54,6 +59,23 @@ resetAlert() {
       this.warnClass = false;
   }, 500)
 }
+
+
+getAllOrganizations() {
+  this.dismissAlert();
+  this.spinnerService.show();
+  this.authService.getAllOrganizations().subscribe({
+    next: (response) => {
+      this.organization = response[0];
+      this.spinnerService.hide();
+    },
+    error: (error) => {
+      this.spinnerService.hide();
+      this.alertMessage.ErrorMessage = "Error fetching organization details.";
+    }
+  });
+}
+
 
   getBusinessUserDetails() {
     this.spinnerService.show();

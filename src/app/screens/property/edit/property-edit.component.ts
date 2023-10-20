@@ -51,6 +51,7 @@ export class PropertyEditComponent implements OnInit {
   selectedImage: any;
   imageList: Array<any> = [];
   propertyValidate: PropertyValidate = new PropertyValidate;
+  propertyManagerList: Array<any> = [];
 
 
   @ViewChild('navbar')
@@ -70,6 +71,7 @@ export class PropertyEditComponent implements OnInit {
     this.getPropertyStatus();
     this.getProperty();
     this.getPropertyImageList();
+    this.getProeprtyManagerList();
   }
 
   getProperty() {
@@ -120,6 +122,15 @@ export class PropertyEditComponent implements OnInit {
     });
   }
 
+  getProeprtyManagerList() {
+    this.propertyService.getPropertyManagerList().subscribe({
+      next: (response) => {
+        this.propertyManagerList = response;
+      },
+      error: (error) => {
+      }
+    });
+  }
 
   setPropertyStatus(status: any): string {
     return this.propertyHelper.getPropertyStatusString(Number(status));
@@ -172,6 +183,7 @@ export class PropertyEditComponent implements OnInit {
   }
 
   edit() {
+    this.dismissAlert();
     var error = this.propertyValidate.validatePrimaryDetails(this.entityData.Property)
 
     if(error.length != 0){
@@ -180,7 +192,6 @@ export class PropertyEditComponent implements OnInit {
       return;
     } 
 
-    this.dismissAlert();
     this.spinnerService.show();
     const jsonString = JSON.stringify(this.entityData);
     const formData = new FormData();
