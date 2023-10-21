@@ -7,7 +7,7 @@ export const CONTRACT_REQUEST_CONSTANTS = {
 
 
     //headers
-    CONTRACT_RQUEST_HEADERS: [{ Name: "Property" }, { Name: "Customer" }, { Name: "Proposed Price" }, { Name: "Status" },
+    CONTRACT_RQUEST_HEADERS: [{ Name: "Property" }, { Name: "Customer" }, { Name: "Proposed Price" }, { Name: "Status" },{ Name: "Applied On" },
     { Name: "Is Approved" }, { Name: "Approval Date" }],
 
     //tabslist

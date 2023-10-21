@@ -1,0 +1,115 @@
+<div id="layout-wrapper">
+    <sidebar #navbar (toggleNavBar$)="toggleNavBar($event);"></sidebar>
+    <div class="page-content" [ngStyle]="{ 'padding-left': ( sideBarVisible ? '250px' : '0px' )}">
+        <div class="container-fluid">
+            <header id="page-topbar">
+                <topbar (requestNavBarToggle$)="reqeustNavBarToggle($event);"></topbar>
+            </header>
+            <div class="row">
+                <div [ngClass]="{'ahashakeheartache': warnClass}">
+                    <div class="col-md-12">
+                        <div class="alert alert-info alert-dismissible" *ngIf="alertMessage.SuccessMessage">
+                            <button type="button" class="btn-close" (click)="dismissAlert()"
+                                aria-label="Close"></button>
+                            <div class="alert-message">
+                                {{alertMessage.SuccessMessage}}
+                            </div>
+                        </div>
+                        <div class="alert alert-danger alert-dismissible" *ngIf="alertMessage.ErrorMessage">
+                            <button type="button" class="btn-close" (click)="dismissAlert()"
+                                aria-label="Close"></button>
+                            <div class="alert-message">
+                                {{alertMessage.ErrorMessage}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ngx-spinner bdColor="rgba(0,0,0,0.3)" size="medium" color="#fff" type="square-jelly-box"
+                [fullScreen]="true"
+                template="<b><img src=http://rechorderp.com/app/images/loader_cupom.gif height=100px width=100px></b>">
+                <p style="color: white"> Loading... </p>
+            </ngx-spinner>
+            <div class="card">
+                <div style="padding: 5px;">
+                    <div class="row">
+                        <div class="col-md-6" style="display:flex; align-items: center;">
+                            <h3 class="text-primary  hide-long-text" style="margin:0px">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-wM_GK6aQctmMghHJjd1rMjuVrx5W7vvYKBwlGOoh9-4NVJAOL1FLxpFvQW61tZiMCzw&usqp=CAU" height="30px"
+                                    width="30px">
+                                &nbsp;Organization: {{entityData.Organization.Name}}
+                            </h3>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 5px;">
+                            <div class="btn-group" style="float:right;">
+                                <button class="btn btn-primary" type="button" (click)="edit()">Edit
+                                    Organization</button>
+                                <button class="btn btn-secondary" (click)="back()">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab" style="overflow-x: auto; overflow-y: hidden; background-color: lightgrey;">
+                    <ul class="nav nav-tabs" style="flex-wrap: nowrap;">
+                        <li [ngClass]="{ 'active': currentTab == o.Value, 'nav-item': true }"
+                            (click)="currentTab = o.Value" *ngFor="let o of tabs; let i = index">
+                            <a class="nav-link" role="tab">
+                                <span style="white-space:nowrap;">{{o.Name}}</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="Card">
+                    <div *ngIf="currentTab == orgConstant.PRIMARY">
+                        <div class="card" style="padding:10px;">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label class="required input-label">Name</label><br />
+                                    <input class="form-control" type="text"
+                                        [(ngModel)]="entityData.Organization.Name" />
+                                </div><br />
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <br><label class="input-label"><b><b>Description</b></b></label><br />
+                                    <textarea class="form-control" rows="3" name="description" style="width: 100%;"
+                                        [(ngModel)]="entityData.Organization.Description">
+                                </textarea>
+                                </div><br />
+                            </div>
+                            <div class="col-md-3">
+                                <div class="d-flex" style="flex-direction: column;align-items: left;">
+                                    <br> <label class="input-label">Image</label>
+                                    <div class="btn-group">
+                                        <img height="200px" width="200px"
+                                            [src]="entityData.Organization.Url ? entityData.Organization.Url : 'https://www.vinebrookhomes.com/img/default.png'"
+                                            style="border: 2px solid #555;">
+                                    </div>
+                                    <div class="btn-group" style="margin-top:0.5rem;  ">
+                                        <input class="form-control d-none" type="file" id="myfile" name="myfile"
+                                            (change)="getImageData($event)" accept="image/*" />
+                                        <label for="myfile" class="file-upload-button">
+                                            Upload
+                                        </label> &nbsp;
+                                        <label class="file-delete-button"> <i class='fas fa-trash-alt'
+                                                (click)="deleteImage()"
+                                                style="color: white; font-size:small;"></i></label>
+                                    </div>
+                                </div>
+                            </div><br />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="margin-bottom: 10px">
+                            <div class="btn-group" style="float:right;">
+                                <button class="btn btn-primary" type="button" (click)="edit()">Edit
+                                    Organization</button>
+                                <button class="btn btn-secondary" (click)="back()"
+                                    style="margin-right: 5pt;">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

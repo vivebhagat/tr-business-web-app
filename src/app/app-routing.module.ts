@@ -20,7 +20,8 @@ import { ContractRequestEditComponent } from './screens/contract-request/edit/co
 import { RegisterComponent } from './screens/auth/register/register.component';
 import { BusinessUserAddComponent } from './screens/business-user/add/business-user-add.component';
 import { BusinessUserEditComponent } from './screens/business-user/edit/business-user-edit.component';
-import { OrganizationListComponent } from './screens/org/org-list.component';
+import { OrganizationListComponent } from './screens/org/list/org-list.component';
+import { OrganizationEditComponent } from './screens/org/edit/org-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, 
@@ -44,6 +45,8 @@ const routes: Routes = [
   { path: 'contract-request-add', component: ContractRequestAddComponent },
   { path: 'contract-request-edit/:id', component: ContractRequestEditComponent },
   { path: 'organization', component: OrganizationListComponent },
+  { path: 'organization-edit/:id', component: OrganizationEditComponent },
+
 ];
 
 @NgModule({

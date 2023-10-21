@@ -35,7 +35,8 @@ import { RegisterComponent } from './screens/auth/register/register.component';
 import { BusinessUserListComponent } from './screens/business-user/list/business-user-list.component';
 import { BusinessUserAddComponent } from './screens/business-user/add/business-user-add.component';
 import { BusinessUserEditComponent } from './screens/business-user/edit/business-user-edit.component';
-import { OrganizationListComponent } from './screens/org/org-list.component';
+import { OrganizationListComponent } from './screens/org/list/org-list.component';
+import { OrganizationEditComponent } from './screens/org/edit/org-edit.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { OrganizationListComponent } from './screens/org/org-list.component';
     BusinessUserListComponent,
     BusinessUserAddComponent,
     BusinessUserEditComponent,
-    OrganizationListComponent
+    OrganizationListComponent,
+    OrganizationEditComponent
   ],
   imports: [
     RouterModule,

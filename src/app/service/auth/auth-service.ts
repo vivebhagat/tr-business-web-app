@@ -66,6 +66,10 @@ export class AuthService {
         return this.http.post<any>(this.baseUrl + '/api/Organization/EditOrganization/', data)
     }
 
+    getOrganization(Id: number): Observable<any> {
+        return this.http.get<any>(this.baseUrl + '/api/Organization/GetOrganizationById/' + Id)
+    }
+
     getAllOrganizations(): Observable<any> {
         return this.http.get<any>(this.baseUrl + '/api/Organization/GetAllOrganizations')
     }

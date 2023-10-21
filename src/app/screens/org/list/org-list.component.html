@@ -57,7 +57,7 @@
                                     </tr>
                                     <tr *ngFor="let o of organizationList; index as indexOfelement">
                                         <td>
-                                            <i style="margin-right:5pt;font-size:small" class='fas fa-edit' (click)="showModal(indexOfelement,'Edit')"></i>
+                                            <i style="margin-right:5pt;font-size:small" class='fas fa-edit' (click)="goToEdit(o.Id)"></i>
                                         </td>
                                         <td>
                                             <span>

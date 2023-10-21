@@ -90,6 +90,11 @@
                                         </td>
                                         <td>
                                             <span>
+                                                {{o.CreatedDate | date: 'dd/mm/yyy hh:mm a'}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
                                                 <input type="checkbox" onclick="return false;" [(ngModel)]="o.IsApproved">
                                             </span>
                                         </td>

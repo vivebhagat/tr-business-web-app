@@ -74,6 +74,9 @@ export class OrganizationListComponent implements OnInit {
     });
   }
 
+  goToEdit(Id: number) {
+    this.route.navigate(['organization-edit/' + Id],);
+  }
 
   toggleNavBar(event: any) {
     this.sideBarVisible = !this.sideBarVisible;
