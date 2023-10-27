@@ -173,7 +173,7 @@ export class ContractRequestEditComponent implements OnInit {
   }
 
   back() {
-    this.router.navigate(['my-applications'])
+    this.router.navigate(['applications'])
   }
 
   formatDate(data: any) {

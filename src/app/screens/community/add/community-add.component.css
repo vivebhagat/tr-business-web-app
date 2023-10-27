@@ -1,0 +1,43 @@
+.collapsible {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.collapsible-heading {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+
+}
+
+.collapsible-heading .icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.collapsible-content {
+  display: none;
+  padding: 10px;
+  overflow: hidden;
+  max-height: 0;
+}
+
+.collapsible.active .collapsible-content {
+  display: block;
+  max-height: 2000px; 
+}
+
+.property {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.property-name {
+  font-weight: bold;
+}

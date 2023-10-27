@@ -92,6 +92,7 @@ export class MemberRoleListComponent implements OnInit {
     this.modalVisible = true;
     switch (type) {
       case 'Add':
+        this.modelId = 0;
         this.entityData.BusinessUserRole = new BusinessUserRole;
         this.action = 'Add Role';
         break;

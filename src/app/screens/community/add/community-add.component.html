@@ -1,0 +1,223 @@
+<div id="layout-wrapper">
+    <sidebar #navbar (toggleNavBar$)="toggleNavBar($event);"></sidebar>
+    <div class="page-content" [ngStyle]="{ 'padding-left': ( sideBarVisible ? '250px' : '0px' )}">
+        <div class="container-fluid">
+            <header id="page-topbar">
+                <topbar (requestNavBarToggle$)="reqeustNavBarToggle($event);"></topbar>
+            </header>
+            <div class="row">
+                <div [ngClass]="{'ahashakeheartache': warnClass}">
+                    <div class="col-md-12">
+                        <div class="alert alert-info alert-dismissible" *ngIf="alertMessage.SuccessMessage">
+                            <button type="button" class="btn-close" (click)="dismissAlert()"
+                                aria-label="Close"></button>
+                            <div class="alert-message">
+                                {{alertMessage.SuccessMessage}}
+                            </div>
+                        </div>
+                        <div class="alert alert-danger alert-dismissible" *ngIf="alertMessage.ErrorMessage">
+                            <button type="button" class="btn-close" (click)="dismissAlert()"
+                                aria-label="Close"></button>
+                            <div class="alert-message">
+                                {{alertMessage.ErrorMessage}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ngx-spinner bdColor="rgba(0,0,0,0.3)" size="medium" color="#fff" type="square-jelly-box"
+                [fullScreen]="true"
+                template="<b><img src=http://rechorderp.com/app/images/loader_cupom.gif height=100px width=100px></b>">
+                <p style="color: white"> Loading... </p>
+            </ngx-spinner>
+            <div class="card">
+                <div style="padding: 5px;">
+                    <div class="row">
+                        <div class="col-md-6" style="display:flex; align-items: center;">
+                            <h3 class="text-primary  hide-long-text" style="margin:0px">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvbGgymSO37vtURaxjLcrxUYlv66vXVShwfA&usqp=CAU"
+                                    height="30px" width="30px">
+                                &nbsp;Community
+                            </h3>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 5px;">
+                            <div class="btn-group" style="float:right;">
+                                <button class="btn btn-primary" type="button" (click)="addCommunity()">Add
+                                    Community</button>
+                                <button class="btn btn-secondary" (click)="Back()">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab" style="overflow-x: auto; overflow-y: hidden; background-color: lightgrey;">
+                    <ul class="nav nav-tabs" style="flex-wrap: nowrap;">
+                        <li [ngClass]="{ 'active': currentTab == o.Value, 'nav-item': true }"
+                            (click)="currentTab = o.Value" *ngFor="let o of UI_CONSTANT.COMMUNITY_TABS; let i = index">
+                            <a class="nav-link" role="tab">
+                                <span style="white-space:nowrap;">{{o.Name}}</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="Card">
+                    <div *ngIf="currentTab == UI_CONSTANT.PRIMARY">
+                        <div class="card" style="padding:10px;">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <br><label class="required input-label">Name</label><br />
+                                    <input class="form-control" type="text" [(ngModel)]="entityData.Community.Name" />
+                                </div><br />
+                                <div class="col-md-3">
+                                    <br><label class="required input-label">Organization</label><br />
+                                    <select class="form-select" [(ngModel)]="entityData.Community.OrganizationId">
+                                        <option *ngFor="let o of organizationList" [ngValue]="o.Id">{{o.Name}}
+                                        </option>
+                                    </select>
+                                </div><br />
+                                <div class="col-md-3">
+                                    <br> <label class="required input-label">Construction Status</label><br />
+                                    <select class="form-select" [(ngModel)]="entityData.Community.Status">
+                                        <option *ngFor="let o of constructionStatusList" [ngValue]="o.Id">
+                                            {{o.Name}}</option>
+                                    </select>
+                                </div><br />
+                                <div class="col-md-3">
+                                    <br><label class="required input-label">Community Type</label><br />
+                                    <select class="form-select" [(ngModel)]="entityData.Community.Status">
+                                        <option *ngFor="let o of communityTypeList" [ngValue]="o.Id">
+                                            {{o.Name}}</option>
+                                    </select>
+                                </div><br />
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <br><label class="required input-label">Land Area</label><br />
+                                    <input class="form-control" type="text" [(ngModel)]="entityData.Community.LandArea" />
+                                </div><br />
+                                <div class="col-md-3 d-flex align-items-end">
+                                   <div class="form-check">
+                                    <br><input type="checkbox" class="form-check-input" id="featured"
+                                            [(ngModel)]="entityData.Community.IsFeatured">
+                                        <label class="form-check-label" for="featured">Is Featured</label>
+                                    </div>
+                                </div><br />
+                                <div class="col-md-3 d-flex align-items-end">
+                                    <div class="form-check">
+                                        <br> <input type="checkbox" class="form-check-input" id="active"
+                                            [(ngModel)]="entityData.Community.IsActive">
+                                        <label class="form-check-label" for="active">Is Active</label>
+                                    </div>
+                                </div><br />
+                            </div>
+                            <div class="col-md-12">
+                                <br><label class="input-label"><b><b>Location</b></b></label><br />
+                                <textarea class="form-control" rows="3" name="description" style="width: 100%;"
+                                    [(ngModel)]="entityData.Community.Location">
+                            </textarea>
+                            </div><br />
+                            <div class="col-md-12">
+                                <label class="input-label"><b><b>Description</b></b></label><br />
+                                <textarea class="form-control" rows="3" name="description" style="width: 100%;"
+                                    [(ngModel)]="entityData.Community.Description">
+                            </textarea>
+                            </div><br />
+                                <div class="collapsible" [ngClass]="getCollapsibleClass()">
+                                  <div class="collapsible-heading" (click)="toggleOverview()">
+                                    <span class="heading-text">Overview</span>
+                                    <span class="icon">{{ isCollapsed ? '+' : '-' }}</span>
+                                  </div>
+                                  <div class="collapsible-content">
+                                    <div class="property">
+                                      <span class="property-name">Price Range:</span>
+                                      <span class="property-value">From ${{ entityData.Community.PriceFrom | number:'1.2-2' }} to ${{ entityData.Community.PriceTo | number:'1.2-2' }}</span>
+                                    </div>
+                                    <div class="property">
+                                      <span class="property-name">Bedrooms:</span>
+                                      <span class="property-value">{{ entityData.Community.BedFrom }} to {{ entityData.Community.BedTo }}</span>
+                                    </div>
+                                    <div class="property">
+                                      <span class="property-name">Bathrooms:</span>
+                                      <span class="property-value">{{ entityData.Community.BathFrom }} to {{ entityData.Community.BathTo }}</span>
+                                    </div>
+                                    <div class="property">
+                                      <span class="property-name">Area Range:</span>
+                                      <span class="property-value">From {{ entityData.Community.AreaFrom }} sq. ft. to {{ entityData.Community.AreaTo }} sq. ft.</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="margin-bottom: 10px">
+                            <div class="btn-group" style="float:right;">
+                                <button class="btn btn-primary" type="button" (click)="addCommunity()">Add
+                                    Community</button>
+                                <button class="btn btn-secondary" (click)="Back()"
+                                    style="margin-right: 5pt;">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal backdrop" id="popup" role="dialog" *ngIf="showModal"
+                    style="display: block !important;">
+                    <div class="modal-dialog" style="max-width: 500px;">
+                        <div class="modal-content" style="max-height:40vh;min-height:40vh;">
+                            <div class="card-header bg-info">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h2>{{action}}</h2>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="btn-group" style="float:right;">
+                                            <button class="btn btn-secondary"
+                                                (click)="showModal = false;">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-body subtab-modal-body">
+                                <div class="row">
+                                    <div [ngClass]="{'ahashakeheartache': warnClass}">
+                                        <div class="col-md-12">
+                                            <div class="alert alert-danger alert-dismissible" *ngIf="modalMessage">
+                                                <button type="button" class="btn-close" (click)="dismissAlert()"
+                                                    aria-label="Close"></button>
+                                                <div class="alert-message">
+                                                    {{modalMessage}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-horizontal">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-3" style="display: none">
+                                                    <br><label class="input-label">Index</label><br />
+                                                    {{modelIndex}}
+                                                </div><br />
+                                                <div class="col-md-12">
+                                                    <label class="input-label required">Role</label><br />
+
+                                                </div><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="button" *ngIf="!enableEdit"
+                                    (click)="addFormData(currentTab)">{{action}}</button>
+                                <button class="btn btn-primary" type="button" *ngIf="enableEdit"
+                                    (click)="editFormData(currentTab,modelIndex)">{{action}}</button>
+                                <button class="btn btn-secondary" type="button"
+                                    (click)="showModal = false">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

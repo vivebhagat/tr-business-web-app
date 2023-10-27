@@ -1,0 +1,55 @@
+
+
+.header-card {
+    padding:0.5rem 0.5rem!important;
+    margin-bottom: 0.25rem !important;
+}
+
+.filter-footer {
+    margin-top: 10px;   
+}
+
+.filter-panel {
+    margin: 0.5rem !important;
+    padding: 0.5rem !important;
+}
+
+.nav-item.active {
+    border-top: 2px solid black;
+    background-color: whitesmoke;
+}
+
+.nav-item.active span {
+    font-weight: bold;
+    color: black;
+}
+
+.table-responsive .dropdown-menu {
+    position: absolute !important;
+    top: 0% !important;
+    left: 100% !important;
+}
+
+.custom-thead {
+    width: auto;
+    text-transform: capitalize;
+    background-color: lightblue;
+    line-height: 10px;
+}
+
+.custom-tr {
+    white-space: nowrap; 
+    text-align:left;
+}
+
+.custom-th {
+    max-width: 5rem !important;
+    width: 5rem !important;
+}
+
+.table-card {
+    display: block;
+    overflow-x: auto;
+    padding-bottom: 0rem !important;
+    /* margin-bottom:0.25rem !important;*/
+}

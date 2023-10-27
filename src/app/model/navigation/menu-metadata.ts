@@ -5,7 +5,7 @@ export const MenuDataList : MenuData[] = [
       pageName: "Manage",
       expanded: false,
       menus: [
-        { name: "Projects", url: "project-list", selected: false, data: '' },
+        { name: "Communitites", url: "community-list", selected: false, data: '' },
         { name: "Properties", url: "property-list", selected: false, data: '' },
       ],
     },
@@ -39,6 +39,14 @@ export const MenuDataList : MenuData[] = [
         { name: "Profile", url: "profile", selected: false, data: '' },
         { name: "Inbox", url: "inbox", selected: false, data: '' },
         { name: "Organization", url: "organization", selected: false, data: '' },
+      ],
+    },
+    {
+      pageName: "Master",
+      expanded: false,
+      menus: [
+        { name: "Community Type", url: "community-type-list", selected: false, data: '' },
+        { name: "Construction Status", url: "construction-status-list", selected: false, data: '' },
       ],
     },
   ];

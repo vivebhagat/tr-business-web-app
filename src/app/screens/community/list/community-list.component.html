@@ -15,20 +15,20 @@
                     <div class="card mb-2">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <h3 class="text-primary">
-                                        <img width="30" height="30"
-                                            src="https://cdn-icons-png.flaticon.com/128/2245/2245126.png">
-                                        &nbsp;Applications
+                                        <img width="40" height="40"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvbGgymSO37vtURaxjLcrxUYlv66vXVShwfA&usqp=CAU">
+                                        &nbsp;Communities
                                     </h3>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-3">
 
                                 </div>
-                                <div class="col-md-3">
-                                    <!--<div style="margin-right: 0.5rem; float: right;">
-                                        <button class="btn btn-primary" (click)="add();">Add Application</button>
-                                    </div>-->
+                                <div class="col-md-6">
+                                    <div style="margin-right: 0.5rem; float: right;">
+                                        <button class="btn btn-primary" (click)="add()">Add</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -50,57 +50,62 @@
                                         <th>
                                             Id
                                         </th>
-                                        <th *ngFor="let o of contractRequestListHeaders">
+                                        <th *ngFor="let o of communityListHeaders">
                                             {{o.Name}}
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngIf="contractRequestList.length == 0">
+                                    <tr *ngIf="communityList.length == 0">
                                         <td style="text-align: center;" colspan="100%">Table has no records.</td>
                                     </tr>
                                     <tr
-                                        *ngFor="let o of contractRequestList; index as indexOfelement">
+                                        *ngFor="let o of communityList; index as indexOfelement">
                                         <td>
                                             <i style="margin-right:5pt;font-size:small" class='fas fa-edit' (click)="edit(o.Id)"></i>
                                             <i style="font-size:smaller" class='fas fa-trash-alt'
-                                                style="color: red" (click)="delete(o.Id)"></i>
+                                                style="color: red"></i>
                                         </td>
                                         <td><span>{{o.Id}}</span>
                                         </td>
                                         <td>
                                             <span>
-                                                {{o.Property.Name}}
+                                                {{o.Name}}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                                {{setCustomerName(o.CustomerId)}}
+                                                {{o.Organization}}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                                {{o.ProposedPurchasePrice | currency: 'USD'}}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span [ngClass]="getStatusColor(o.Status)">
-                                                {{setContractRequestStatus(o.Status)}}
+                                                {{o.IsFeatured}}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                                {{o.CreatedDate | date: 'dd/MM/yyyy hh:mm a'}}
+                                                {{o.IsActive}}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                                <input type="checkbox" onclick="return false;" [(ngModel)]="o.IsApproved">
+                                                {{o.Status}}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                                {{o.ApprovalDate | date:'dd/mm/yyyy'}}
+                                                {{o.CommunityType.Name}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                {{o.LandArea}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                {{o.NumberOfUnit}}
                                             </span>
                                         </td>
                                     </tr>

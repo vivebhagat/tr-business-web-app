@@ -37,6 +37,10 @@ import { BusinessUserAddComponent } from './screens/business-user/add/business-u
 import { BusinessUserEditComponent } from './screens/business-user/edit/business-user-edit.component';
 import { OrganizationListComponent } from './screens/org/list/org-list.component';
 import { OrganizationEditComponent } from './screens/org/edit/org-edit.component';
+import { CommunityTypeListComponent } from './screens/community-type/list/community-type-list.component';
+import { ConstructionStatusListComponent } from './screens/construction-status/list/construction-status-list.component';
+import { CommunityListComponent } from './screens/community/list/community-list.component';
+import { CommunityAddComponent } from './screens/community/add/community-add.component';
 
 
 @NgModule({
@@ -67,7 +71,11 @@ import { OrganizationEditComponent } from './screens/org/edit/org-edit.component
     BusinessUserAddComponent,
     BusinessUserEditComponent,
     OrganizationListComponent,
-    OrganizationEditComponent
+    OrganizationEditComponent,
+    CommunityTypeListComponent,
+    ConstructionStatusListComponent,
+    CommunityListComponent,
+    CommunityAddComponent
   ],
   imports: [
     RouterModule,
