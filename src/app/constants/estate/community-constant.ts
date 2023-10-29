@@ -4,12 +4,17 @@ export const COMMUNITY_CONSTANTS = {
     ADD_COMMUNITY: 'Add Community',
     EDIT_COMMUNITY: 'Edit Community',
 
+    ADD_PROPERTY: 'Add Property',
+    EDIT_PROPERTY: 'Edit Property',
+
+
     //tabs
     PRIMARY: 'PRIMARY',
-    PROEPRTY: 'PROPERTY',
+    PROPERTY: 'PROPERTY',
 
     //headers
-    PROPERT_HEADERS: [{Name: 'Name'}],
+    PROPERTY_HEADERS: [{Name: 'Name'}, {Name: 'Price'}, {Name: 'Type'}, {Name: 'Status'}],
+
     COMMUNITY_LIST_HEADERS: [{ Name: "Name" }, { Name: "Organization" }, { Name: "Is Featured" }, 
     { Name: "Is Active" }, { Name: "Status" }, { Name: "Community Type" },
         { Name: "Land Area" }, { Name: "Number Of Units" }
@@ -18,6 +23,7 @@ export const COMMUNITY_CONSTANTS = {
     //tabslist
     COMMUNITY_TABS: [ 
         {Name: 'Primary Details', Value: 'PRIMARY'},
+        {Name: 'Property', Value: 'PROPERTY'},
     ]
 
 };

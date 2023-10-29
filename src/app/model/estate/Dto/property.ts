@@ -6,6 +6,7 @@ export class Property {
     Description: string = '';
     Price: number = 0;
     Type: number = 0;
+    UnitType: string = '';
     PropertyManagerId: number = 0;
     IsAvailable: boolean = false;
     ConstructionDate?: string | null;

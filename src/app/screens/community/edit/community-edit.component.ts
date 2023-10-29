@@ -18,9 +18,9 @@ import { CommunityToPropertyMap } from 'src/app/model/estate/community-to-proper
 
 
 @Component({
-  selector: 'community-add',
-  styleUrls: ['./community-add.component.css'],
-  templateUrl: './community-add.component.html',
+  selector: 'community-edit',
+  styleUrls: ['./community-edit.component.css'],
+  templateUrl: './community-edit.component.html',
   providers: [GlobalService, CommunityService],
   animations: [
     trigger('expandCollapse', [
@@ -30,7 +30,7 @@ import { CommunityToPropertyMap } from 'src/app/model/estate/community-to-proper
     ]),
   ],
 })
-export class CommunityAddComponent implements OnInit {
+export class CommunityEditComponent implements OnInit {
   sideBarVisible: boolean = true;
   alertMessage: AlertMessage = new AlertMessage;
   toggle: boolean = false;
@@ -53,6 +53,7 @@ export class CommunityAddComponent implements OnInit {
   imageFile: any;
   communityToPropertyMap: CommunityToPropertyMap = new CommunityToPropertyMap;
   propertyList: Array<any> = [];
+  communityId: number = 0;
 
   @ViewChild('navbar')
   navbar!: TopBarComponent;
@@ -239,7 +240,7 @@ export class CommunityAddComponent implements OnInit {
     });
   }
 
-  addCommunity() {
+  editCommunity() {
     var error = this.communityValidate.validatePrimaryDetails(this.entityData.Community)
 
     if (error.length != 0) {

@@ -1,4 +1,7 @@
+import { COMMUNITY_CONSTANTS } from "src/app/constants/estate/community-constant";
+import { Property } from "src/app/model/estate/Dto/property";
 import { Community } from "src/app/model/estate/community";
+import { CommunityToPropertyMap } from "src/app/model/estate/community-to-propert-map";
 
 
 export class CommunityValidate {
@@ -24,5 +27,16 @@ export class CommunityValidate {
             errors.push('Community type is required.');
         }
         return errors.length > 1 ? ["Please fill all required fields"] : errors;
+    }
+
+    validateProperty(communityToPropertyMap: CommunityToPropertyMap): string {
+
+        let error: string = '';
+
+        if (communityToPropertyMap.PropertyId == 0) {
+            error = 'Property is required.';
+        }
+        
+        return error;
     }
 }

@@ -13,6 +13,7 @@ export class Community {
     AreaFrom: number = 0;
     AreaTo: number = 0;
     Location: string = '';
+    Url: string ='';
     IsFeatured: boolean = false;
     IsActive: boolean = false;
     Status: any;

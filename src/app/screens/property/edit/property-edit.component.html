@@ -73,21 +73,19 @@
                                     <div class="form-left">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label class="required input-label">Name</label><br />
+                                                <br><label class="required input-label">Name</label><br />
                                                 <input class="form-control" type="text"
                                                     [(ngModel)]="entityData.Property.Name" />
                                             </div><br />
                                             <div class="col-md-4">
-                                                <label class="required input-label">Price</label><br />
-                                                <input class="form-control" type="number"
-                                                    [(ngModel)]="entityData.Property.Price" />
+                                                <br><label class="required input-label">Unit Type</label><br />
+                                                <input class="form-control" type="text"
+                                                    [(ngModel)]="entityData.Property.UnitType" />
                                             </div><br />
                                             <div class="col-md-4">
-                                                <label class="required input-label">Type</label><br />
-                                                <select class="form-select" [(ngModel)]="entityData.Property.Type">
-                                                    <option *ngFor="let o of propertyTypeList" [ngValue]="o.Item1">
-                                                        {{setPropertyType(o.Item1)}}</option>
-                                                </select>
+                                                <br><label class="required input-label">Price</label><br />
+                                                <input class="form-control" type="number"
+                                                    [(ngModel)]="entityData.Property.Price" />
                                             </div><br />
                                         </div>
                                         <div class="row">
@@ -107,24 +105,32 @@
                                             </div><br />
                                             <div class="col-md-4">
                                                 <br><label class="required input-label">Manager</label><br />
-                                                <select class="form-select" [(ngModel)]="entityData.Property.PropertyManagerId">
+                                                <select class="form-select"
+                                                    [(ngModel)]="entityData.Property.PropertyManagerId">
                                                     <option *ngFor="let o of propertyManagerList" [ngValue]="o.Id">
-                                                        {{o.FirstName}}  {{o.LastName}}</option>
+                                                        {{o.FirstName}} {{o.LastName}}</option>
                                                 </select>
                                             </div><br />
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
+                                                <br><label class="required input-label">Type</label><br />
+                                                <select class="form-select" [(ngModel)]="entityData.Property.Type">
+                                                    <option *ngFor="let o of propertyTypeList" [ngValue]="o.Item1">
+                                                        {{setPropertyType(o.Item1)}}</option>
+                                                </select>
+                                            </div><br />
+                                            <div class="col-md-3">
                                                 <br><label class="input-label">Beds</label><br />
                                                 <input class="form-control" type="number"
                                                     [(ngModel)]="entityData.Property.Bedrooms" />
                                             </div><br />
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <br><label class="input-label">Baths</label><br />
                                                 <input class="form-control" type="number"
                                                     [(ngModel)]="entityData.Property.Bathrooms" />
                                             </div><br />
-                                            <div class="col-md-4">
+                                            <div class="col-md-3">
                                                 <br><label class="required input-label">Area (Sqft)</label><br />
                                                 <input class="form-control" type="number"
                                                     [(ngModel)]="entityData.Property.Area" />
@@ -182,16 +188,15 @@
                                     <div class="col-md-12">
                                     <br>
                                     <div class="collapsible" [ngClass]="{ 'active': isExpanded }">
-                                        <div class="strip-header" (click)="toggleCollapse()">
+                                        <div class="collapsible-header" (click)="toggleCollapse()">
                                             <div style="display: flex;">
                                                 <img src="https://cdn-icons-png.flaticon.com/512/9588/9588997.png"
                                                     height="30px" width="30px">
                                                 <h3>Amenities</h3>
                                             </div>
-                                            <div class="arrow" [class.rotate-up]="isExpanded"
-                                                [class.rotate-down]="!isExpanded"></div>
+                                            <span style="font-size: 20px;">{{ !isExpanded ? '+' : '-' }}</span>
                                         </div>
-                                        <div class="strip-content"
+                                        <div class="collapsible-content"
                                             [@expandCollapse]="isExpanded ? 'expanded' : 'collapsed'">
                                             <div class="row">
                                                 <div class="col-md-3">

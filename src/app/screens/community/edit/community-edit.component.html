@@ -37,12 +37,12 @@
                             <h3 class="text-primary  hide-long-text" style="margin:0px">
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvbGgymSO37vtURaxjLcrxUYlv66vXVShwfA&usqp=CAU"
                                     height="30px" width="30px">
-                                &nbsp;Community
+                                &nbsp;Community: {{entityData.Community.Name}}
                             </h3>
                         </div>
                         <div class="col-md-6" style="margin-top: 5px;">
                             <div class="btn-group" style="float:right;">
-                                <button class="btn btn-primary" type="button" (click)="addCommunity()">Add
+                                <button class="btn btn-primary" type="button" (click)="editCommunity()">Edit
                                     Community</button>
                                 <button class="btn btn-secondary" (click)="Back()">Back</button>
                             </div>
@@ -263,7 +263,7 @@
                     <div class="row">
                         <div class="col-md-12" style="margin-bottom: 10px">
                             <div class="btn-group" style="float:right;">
-                                <button class="btn btn-primary" type="button" (click)="addCommunity()">Add
+                                <button class="btn btn-primary" type="button" (click)="editCommunity()">Edit
                                     Community</button>
                                 <button class="btn btn-secondary" (click)="Back()"
                                     style="margin-right: 5pt;">Back</button>

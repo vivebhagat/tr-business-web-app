@@ -49,7 +49,6 @@ export class PropertyAddComponent implements OnInit {
   propertyValidate: PropertyValidate = new PropertyValidate;
   propertyManagerList: Array<any> = [];
 
-
   @ViewChild('navbar')
   navbar!: TopBarComponent;
 
