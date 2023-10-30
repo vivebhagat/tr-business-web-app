@@ -64,7 +64,7 @@
                                         <td>
                                             <i style="margin-right:5pt;font-size:small" class='fas fa-edit' (click)="edit(o.Id)"></i>
                                             <i style="font-size:smaller" class='fas fa-trash-alt'
-                                                style="color: red"></i>
+                                                style="color: red" (click)="delete(o.Id)"></i>
                                         </td>
                                         <td><span>{{o.Id}}</span>
                                         </td>
@@ -75,7 +75,7 @@
                                         </td>
                                         <td>
                                             <span>
-                                                {{o.Organization}}
+                                                {{o.Organization.Name}}
                                             </span>
                                         </td>
                                         <td>
@@ -90,7 +90,7 @@
                                         </td>
                                         <td>
                                             <span>
-                                                {{o.Status}}
+                                                {{o.Status.Name}}
                                             </span>
                                         </td>
                                         <td>

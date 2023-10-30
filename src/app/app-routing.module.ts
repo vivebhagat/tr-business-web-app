@@ -26,6 +26,7 @@ import { CommunityTypeListComponent } from './screens/community-type/list/commun
 import { ConstructionStatusListComponent } from './screens/construction-status/list/construction-status-list.component';
 import { CommunityListComponent } from './screens/community/list/community-list.component';
 import { CommunityAddComponent } from './screens/community/add/community-add.component';
+import { CommunityEditComponent } from './screens/community/edit/community-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, 
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'construction-status-list', component: ConstructionStatusListComponent },
   { path: 'community-list', component: CommunityListComponent },
   { path: 'community-add', component: CommunityAddComponent },
+  { path: 'community-edit/:id', component: CommunityEditComponent },
 
 ];
 

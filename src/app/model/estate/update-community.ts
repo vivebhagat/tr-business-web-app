@@ -1,5 +1,7 @@
 import { Community } from "./community";
 
 export class UpdateCommunity {
-    Community: Community = new Community;
+    public Community: Community = new Community;
+    public CommunityToPropertyMapList: Array<any> = [];
+    public CommunityImage: any;
 }

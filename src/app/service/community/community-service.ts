@@ -12,7 +12,7 @@ export class CommunityService {
 
     constructor(private http: HttpClient, private httpBackend: HttpBackend) { }
 
-    addCommunity(data: CreateCommunity): Observable<any> {
+    addCommunity(data: any): Observable<any> {
         return this.http.post<any>(this.baseUrl + '/api/Community/AddCommunity', data)
     }
 
@@ -21,10 +21,10 @@ export class CommunityService {
     }
 
     getAllCommunities(): Observable<any> {
-        return this.http.get<any>(this.baseUrl + '/api/Community/GetAllCommunitys')
+        return this.http.get<any>(this.baseUrl + '/api/Community/GetAllCommunities')
     }
 
-    editCommunity(data: UpdateCommunity): Observable<any> {
+    editCommunity(data: any): Observable<any> {
         return this.http.post<any>(this.baseUrl + '/api/Community/EditCommunity', data)
     }
 

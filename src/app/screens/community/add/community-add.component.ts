@@ -14,7 +14,7 @@ import { CommunityHelper } from '../helper/community-helper';
 import { AuthService } from 'src/app/service/auth/auth-service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { PropertyStatus } from 'src/app/model/estate/property-status';
-import { CommunityToPropertyMap } from 'src/app/model/estate/community-to-propert-map';
+import { CommunityToPropertyMap } from 'src/app/model/estate/community-to-property-map';
 
 
 @Component({
@@ -191,8 +191,10 @@ export class CommunityAddComponent implements OnInit {
       case this.UI_CONSTANT.PROPERTY:
         this.propertyList.forEach(type => {
           if (type.Id == this.communityToPropertyMap.PropertyId) {
-            this.communityToPropertyMap.Property = type;
-          }
+            this.communityToPropertyMap.PropertyName = type.Name;
+            this.communityToPropertyMap.PropertyPrice = type.Price;
+            this.communityToPropertyMap.PropertyType = type.UnitType;
+            this.communityToPropertyMap.PropertyStatus = type.Status;          }
         });
         break;
     }
@@ -248,8 +250,12 @@ export class CommunityAddComponent implements OnInit {
       return;
     }
 
+    const jsonString = JSON.stringify(this.entityData);
+    const formData = new FormData();
+    formData.append('ModelString', jsonString);
+    formData.append('file', this.imageFile);
     this.spinnerService.show();
-    this.communityService.addCommunity(this.entityData)
+    this.communityService.addCommunity(formData)
       .subscribe({
         next: (response) => {
           this.dismissAlert();

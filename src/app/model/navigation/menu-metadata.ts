@@ -5,7 +5,7 @@ export const MenuDataList : MenuData[] = [
       pageName: "Manage",
       expanded: false,
       menus: [
-        { name: "Communitites", url: "community-list", selected: false, data: '' },
+        { name: "Communities", url: "community-list", selected: false, data: '' },
         { name: "Properties", url: "property-list", selected: false, data: '' },
       ],
     },

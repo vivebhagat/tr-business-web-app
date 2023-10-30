@@ -14,7 +14,8 @@ import { CommunityHelper } from '../helper/community-helper';
 import { AuthService } from 'src/app/service/auth/auth-service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { PropertyStatus } from 'src/app/model/estate/property-status';
-import { CommunityToPropertyMap } from 'src/app/model/estate/community-to-propert-map';
+import { CommunityToPropertyMap } from 'src/app/model/estate/community-to-property-map';
+import { UpdateCommunity } from 'src/app/model/estate/update-community';
 
 
 @Component({
@@ -38,7 +39,7 @@ export class CommunityEditComponent implements OnInit {
   action: string = '';
   enableEdit: boolean = false;
   modelIndex: number = 0;
-  entityData: CreateCommunity = new CreateCommunity;
+  entityData: UpdateCommunity = new UpdateCommunity;
   communityTypeList: Array<any> = [];
   constructionStatusList: Array<any> = [];
   showModal: boolean = false;
@@ -73,6 +74,11 @@ export class CommunityEditComponent implements OnInit {
     this.getOrgList();
     this.getConstructionStatusList();
     this.getPropertyList();
+    this.route.params
+    .subscribe(params => {
+      this.communityId = params['id'];
+    });
+    this.getCommunity();
   }
 
   dismissAlert() {
@@ -192,7 +198,11 @@ export class CommunityEditComponent implements OnInit {
       case this.UI_CONSTANT.PROPERTY:
         this.propertyList.forEach(type => {
           if (type.Id == this.communityToPropertyMap.PropertyId) {
-            this.communityToPropertyMap.Property = type;
+            this.communityToPropertyMap.PropertyName = type.Name;
+            this.communityToPropertyMap.PropertyPrice = type.Price;
+            this.communityToPropertyMap.PropertyType = type.UnitType;
+            this.communityToPropertyMap.PropertyStatus = type.Status;
+
           }
         });
         break;
@@ -203,6 +213,16 @@ export class CommunityEditComponent implements OnInit {
     this.globalService.getAllCommunityTypes().subscribe({
       next: (response) => {
         this.communityTypeList = response;
+      },
+      error: (error) => {
+      }
+    });
+  }
+
+    getCommunity() {
+    this.communityService.getCommunitybyId(this.communityId).subscribe({
+      next: (response) => {
+        this.entityData = response;
       },
       error: (error) => {
       }
@@ -249,17 +269,22 @@ export class CommunityEditComponent implements OnInit {
       return;
     }
 
+    const jsonString = JSON.stringify(this.entityData);
+    const formData = new FormData();
+    formData.append('ModelString', jsonString);
+    formData.append('file', this.imageFile);
     this.spinnerService.show();
-    this.communityService.addCommunity(this.entityData)
+    this.communityService.editCommunity(formData)
       .subscribe({
         next: (response) => {
           this.dismissAlert();
-          this.router.navigate(['community-edit/' + response]);
+          this.alertMessage.SuccessMessage = "Community details updated successfully."
+          this.getCommunity();
           this.spinnerService.hide();
         },
         error: (error) => {
           this.spinnerService.hide();
-          this.alertMessage.ErrorMessage = "Failed to add community.";
+          this.alertMessage.ErrorMessage = "Failed to update community details.";
           this.resetAlert();
         }
       });
@@ -290,6 +315,7 @@ export class CommunityEditComponent implements OnInit {
     reader.onload = (_event) => {
       if (reader.result) {
         this.entityData.Community.Url = reader.result?.toString();
+        this.entityData.CommunityImage = this.imageFile;
       }
     }
   }

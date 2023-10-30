@@ -24,5 +24,6 @@ export class Community {
     CommunityTypeId: number = 0;
     LandArea: number = 0;
     NumberOfUnits: number = 0;
+    IsPublished: boolean = false;
     CreatedDate: string = '';
 };

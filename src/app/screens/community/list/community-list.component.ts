@@ -31,7 +31,7 @@ export class CommunityListComponent implements OnInit {
     private route: Router) { }
 
   ngOnInit() {
-    this.getAllMembers();
+    this.getAllCommunities();
   }
 
   dismissAlert(){
@@ -47,7 +47,7 @@ export class CommunityListComponent implements OnInit {
     return ret;
   }
 
-  getAllMembers() {
+  getAllCommunities() {
     this.dismissAlert();
     this.spinnerService.show();
     this.communityService.getAllCommunities().subscribe({
@@ -59,6 +59,27 @@ export class CommunityListComponent implements OnInit {
             this.spinnerService.hide();
             this.alertMessage.ErrorMessage = "Error fetching community list";
         }
+    });
+  }
+
+   delete(Id: number) {
+    const confirmDelete = confirm("Are you sure you want to delete this community?");
+
+    if (!confirmDelete) {
+      return;
+    }
+
+    this.dismissAlert();
+    this.spinnerService.show();
+    this.communityService.deleteCommunity(Id).subscribe({
+      next: (response) => {
+        this.getAllCommunities();
+        this.spinnerService.hide();
+      },
+      error: (error) => {
+        this.spinnerService.hide();
+        this.alertMessage.ErrorMessage = "Error deleting community.";
+      }
     });
   }
 

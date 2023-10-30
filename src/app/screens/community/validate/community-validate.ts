@@ -1,7 +1,7 @@
 import { COMMUNITY_CONSTANTS } from "src/app/constants/estate/community-constant";
 import { Property } from "src/app/model/estate/Dto/property";
 import { Community } from "src/app/model/estate/community";
-import { CommunityToPropertyMap } from "src/app/model/estate/community-to-propert-map";
+import { CommunityToPropertyMap } from "src/app/model/estate/community-to-property-map";
 
 
 export class CommunityValidate {
@@ -16,9 +16,6 @@ export class CommunityValidate {
         }
         if (community.OrganizationId == 0) {
             errors.push('organization is required.');
-        }
-        if (!community.Location) {
-            errors.push('Location is required.');
         }
         if (!community.StatusId) {
             errors.push('Status is required.');

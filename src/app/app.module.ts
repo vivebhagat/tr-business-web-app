@@ -41,6 +41,7 @@ import { CommunityTypeListComponent } from './screens/community-type/list/commun
 import { ConstructionStatusListComponent } from './screens/construction-status/list/construction-status-list.component';
 import { CommunityListComponent } from './screens/community/list/community-list.component';
 import { CommunityAddComponent } from './screens/community/add/community-add.component';
+import { CommunityEditComponent } from './screens/community/edit/community-edit.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { CommunityAddComponent } from './screens/community/add/community-add.com
     CommunityTypeListComponent,
     ConstructionStatusListComponent,
     CommunityListComponent,
-    CommunityAddComponent
+    CommunityAddComponent,
+    CommunityEditComponent
   ],
   imports: [
     RouterModule,

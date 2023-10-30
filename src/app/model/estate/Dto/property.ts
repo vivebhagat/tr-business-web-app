@@ -3,6 +3,7 @@ export class Property {
     Name: string = '';
     Url: string = '';
     IsFeatured: boolean = false;
+    IsPublished: boolean = false;
     Description: string = '';
     Price: number = 0;
     Type: number = 0;
