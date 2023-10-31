@@ -75,9 +75,9 @@ export class CommunityEditComponent implements OnInit {
     this.getConstructionStatusList();
     this.getPropertyList();
     this.route.params
-    .subscribe(params => {
-      this.communityId = params['id'];
-    });
+      .subscribe(params => {
+        this.communityId = params['id'];
+      });
     this.getCommunity();
   }
 
@@ -107,7 +107,7 @@ export class CommunityEditComponent implements OnInit {
       case this.UI_CONSTANT.PROPERTY:
         let newProperty = Object.assign({}, this.communityToPropertyMap) as CommunityToPropertyMap;
         var error = this.communityValidate.validateProperty(this.communityToPropertyMap)
-        if(error){
+        if (error) {
           this.modalMessage = error;
           this.resetAlert();
           return;
@@ -119,7 +119,7 @@ export class CommunityEditComponent implements OnInit {
           this.resetAlert();
           return;
         }
-        
+
         this.entityData.CommunityToPropertyMapList[index] = newProperty;
         this.showModal = false;
         break;
@@ -127,7 +127,7 @@ export class CommunityEditComponent implements OnInit {
     }
   }
 
-  deleteRow(index: number, tab: string) {
+  deleteRow(Id: number, index: number, tab: string) {
     if (!confirm('Are you sure you want to delete this record?')) {
       return;
     }
@@ -135,11 +135,18 @@ export class CommunityEditComponent implements OnInit {
       switch (tab) {
         case this.UI_CONSTANT.PROPERTY:
           this.entityData.CommunityToPropertyMapList.splice(index, 1);
+          if (Id == 0) {
+            this.entityData.CommunityToPropertyMapList.splice(index, 1);
+          }
+          else {
+            this.deleteCommunityToPropertyMap(Id);
+          }
           break;
         default:
       }
     }
   };
+
 
   formAction(tabaction: string, form: string, data: object, index: number) {
     this.dismissAlert();
@@ -157,10 +164,10 @@ export class CommunityEditComponent implements OnInit {
       case 'Edit':
         this.enableEdit = true;
         switch (form) {
-           case this.UI_CONSTANT.PROPERTY:
-             this.action = this.UI_CONSTANT.EDIT_PROPERTY;
-             this.communityToPropertyMap = Object.assign({}, data) as CommunityToPropertyMap;
-             break;
+          case this.UI_CONSTANT.PROPERTY:
+            this.action = this.UI_CONSTANT.EDIT_PROPERTY;
+            this.communityToPropertyMap = Object.assign({}, data) as CommunityToPropertyMap;
+            break;
         }
         this.modelIndex = index;
         break;
@@ -173,7 +180,7 @@ export class CommunityEditComponent implements OnInit {
       case this.UI_CONSTANT.PROPERTY:
         let newProperty = Object.assign({}, this.communityToPropertyMap) as CommunityToPropertyMap;
         var error = this.communityValidate.validateProperty(this.communityToPropertyMap)
-        if(error){
+        if (error) {
           this.modalMessage = error;
           this.resetAlert();
           return;
@@ -219,7 +226,7 @@ export class CommunityEditComponent implements OnInit {
     });
   }
 
-    getCommunity() {
+  getCommunity() {
     this.communityService.getCommunitybyId(this.communityId).subscribe({
       next: (response) => {
         this.entityData = response;
@@ -229,7 +236,25 @@ export class CommunityEditComponent implements OnInit {
     });
   }
 
-  
+  deleteCommunityToPropertyMap(Id: number) {
+    this.spinnerService.show();
+    this.communityService.deleteCommunityToPropertyMap(Id).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.getCommunity();
+        if (response) {
+          this.alertMessage.SuccessMessage = "Property removed successfully.";
+        }
+        this.spinnerService.hide();
+      },
+      error: (error) => {
+        this.spinnerService.hide();
+      },
+      complete: () => {
+      },
+    });
+  }
+
   getPropertyList() {
     this.globalService.getPropertyList().subscribe({
       next: (response) => {
@@ -315,7 +340,6 @@ export class CommunityEditComponent implements OnInit {
     reader.onload = (_event) => {
       if (reader.result) {
         this.entityData.Community.Url = reader.result?.toString();
-        this.entityData.CommunityImage = this.imageFile;
       }
     }
   }

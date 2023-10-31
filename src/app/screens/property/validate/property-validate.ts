@@ -14,8 +14,8 @@ export class PropertyValidate {
         if (property.Price <= 0) {
             errors.push('Price should be a positive value.');
         }
-        if (property.Type == 0) {
-            errors.push('Type is required.');
+        if (!property.UnitType) {
+            errors.push('Unit type is required.');
         }
         if (property.Status == 0) {
             errors.push('Status is required.');

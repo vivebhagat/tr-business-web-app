@@ -62,6 +62,21 @@ export class CommunityListComponent implements OnInit {
     });
   }
 
+  getAllFeaturedCommunities() {
+    this.dismissAlert();
+    this.spinnerService.show();
+    this.communityService.getAllFeaturedCommunities().subscribe({
+        next: (response) => {
+            this.communityList = response;
+            this.spinnerService.hide();
+        },
+        error: (error) => {
+            this.spinnerService.hide();
+            this.alertMessage.ErrorMessage = "Error fetching community list";
+        }
+    });
+  }
+
    delete(Id: number) {
     const confirmDelete = confirm("Are you sure you want to delete this community?");
 
@@ -81,6 +96,17 @@ export class CommunityListComponent implements OnInit {
         this.alertMessage.ErrorMessage = "Error deleting community.";
       }
     });
+  }
+
+  toggleList(type: string) {
+    switch (type) {
+      case 'Latest':
+        this.getAllCommunities();
+        break;
+      case 'Featured':
+        this.getAllFeaturedCommunities();
+        break;
+    }
   }
 
   toggleNavBar(event: any) {

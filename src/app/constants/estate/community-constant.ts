@@ -15,8 +15,7 @@ export const COMMUNITY_CONSTANTS = {
     //headers
     PROPERTY_HEADERS: [{Name: 'Name'}, {Name: 'Price'}, {Name: 'Type'}, {Name: 'Status'}],
 
-    COMMUNITY_LIST_HEADERS: [{ Name: "Name" }, { Name: "Organization" }, { Name: "Is Featured" }, 
-    { Name: "Is Active" }, { Name: "Status" }, { Name: "Community Type" },
+    COMMUNITY_LIST_HEADERS: [{ Name: "Name" }, { Name: "Organization" }, { Name: "Status" }, { Name: "Community Type" },
         { Name: "Land Area" }, { Name: "Number Of Units" }
     ],
     

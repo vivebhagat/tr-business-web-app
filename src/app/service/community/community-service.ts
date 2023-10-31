@@ -24,11 +24,19 @@ export class CommunityService {
         return this.http.get<any>(this.baseUrl + '/api/Community/GetAllCommunities')
     }
 
+    getAllFeaturedCommunities(): Observable<any> {
+        return this.http.get<any>(this.baseUrl + '/api/Community/GetAllFeaturedCommunities')
+    }
+
     editCommunity(data: any): Observable<any> {
         return this.http.post<any>(this.baseUrl + '/api/Community/EditCommunity', data)
     }
 
     deleteCommunity(Id: number): Observable<any> {
         return this.http.get<any>(this.baseUrl + '/api/Community/DeleteCommunity/' + Id)
+    }
+
+    deleteCommunityToPropertyMap(Id: number): Observable<any> {
+        return this.http.get<any>(this.baseUrl + '/api/CommunityToPropertyMap/DeleteCommunityToPropertyMap/' + Id)
     }
 }

@@ -73,14 +73,14 @@
                                     <div class="form-left">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <br><label class="required input-label">Name</label><br />
-                                                <input class="form-control" type="text"
-                                                    [(ngModel)]="entityData.Property.Name" />
-                                            </div><br />
-                                            <div class="col-md-4">
                                                 <br><label class="required input-label">Unit Type</label><br />
                                                 <input class="form-control" type="text"
                                                     [(ngModel)]="entityData.Property.UnitType" />
+                                            </div><br />
+                                            <div class="col-md-4">
+                                                <br><label class="required input-label">Name</label><br />
+                                                <input class="form-control" type="text"
+                                                    [(ngModel)]="entityData.Property.Name" />
                                             </div><br />
                                             <div class="col-md-4">
                                                 <br><label class="required input-label">Price</label><br />
@@ -113,24 +113,17 @@
                                             </div><br />
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-3">
-                                                <br><label class="required input-label">Type</label><br />
-                                                <select class="form-select" [(ngModel)]="entityData.Property.Type">
-                                                    <option *ngFor="let o of propertyTypeList" [ngValue]="o.Item1">
-                                                        {{setPropertyType(o.Item1)}}</option>
-                                                </select>
-                                            </div><br />
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <br><label class="input-label">Beds</label><br />
                                                 <input class="form-control" type="number"
                                                     [(ngModel)]="entityData.Property.Bedrooms" />
                                             </div><br />
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <br><label class="input-label">Baths</label><br />
                                                 <input class="form-control" type="number"
                                                     [(ngModel)]="entityData.Property.Bathrooms" />
                                             </div><br />
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <br><label class="required input-label">Area (Sqft)</label><br />
                                                 <input class="form-control" type="number"
                                                     [(ngModel)]="entityData.Property.Area" />
@@ -172,146 +165,164 @@
                                     </textarea>
                                     </div><br />
                                     <div class="col-md-3">
-                                        <br> <div class="form-check">
+                                        <br>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="published"
+                                                [(ngModel)]="entityData.Property.IsPublished">
+                                            <label class="form-check-label" for="published">Is Published</label>
+                                        </div>
+                                    </div><br />
+                                    <div class="col-md-3">
+                                        <br>
+                                        <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="available"
                                                 [(ngModel)]="entityData.Property.IsAvailable">
                                             <label class="form-check-label" for="available">Is Available</label>
                                         </div>
                                     </div><br />
                                     <div class="col-md-3">
-                                        <br> <div class="form-check">
+                                        <br>
+                                        <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="featured"
                                                 [(ngModel)]="entityData.Property.IsFeatured">
                                             <label class="form-check-label" for="featured">Is Featured</label>
                                         </div>
                                     </div><br />
                                     <div class="col-md-12">
-                                    <br>
-                                    <div class="collapsible" [ngClass]="{ 'active': isExpanded }">
-                                        <div class="collapsible-header" (click)="toggleCollapse()">
-                                            <div style="display: flex;">
-                                                <img src="https://cdn-icons-png.flaticon.com/512/9588/9588997.png"
-                                                    height="30px" width="30px">
-                                                <h3>Amenities</h3>
-                                            </div>
-                                            <span style="font-size: 20px;">{{ !isExpanded ? '+' : '-' }}</span>
-                                        </div>
-                                        <div class="collapsible-content"
-                                            [@expandCollapse]="isExpanded ? 'expanded' : 'collapsed'">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="is-furnished"
-                                                            [(ngModel)]="entityData.Property.IsFurnished">
-                                                        <label class="form-check-label" for="is-furnished">Is
-                                                            Furnished</label>
-                                                    </div>
+                                        <br>
+                                        <div class="collapsible" [ngClass]="{ 'active': isExpanded }">
+                                            <div class="collapsible-header" (click)="toggleCollapse()">
+                                                <div style="display: flex;">
+                                                    <img src="https://cdn-icons-png.flaticon.com/512/9588/9588997.png"
+                                                        height="30px" width="30px">
+                                                    <h3>Amenities</h3>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="air-conditioning"
-                                                            [(ngModel)]="entityData.Property.AirConditioning">
-                                                        <label class="form-check-label" for="air-conditioning">Air
-                                                            Conditioning</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="is-garage"
-                                                            [(ngModel)]="entityData.Property.IsGarage">
-                                                        <label class="form-check-label" for="is-garage">Garage</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="heating"
-                                                            [(ngModel)]="entityData.Property.Heating">
-                                                        <label class="form-check-label" for="heating">Heating</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="water-front"
-                                                            [(ngModel)]="entityData.Property.WaterFront">
-                                                        <label class="form-check-label"
-                                                            for="water-front">Waterfront</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="parking-available"
-                                                            [(ngModel)]="entityData.Property.ParkingAvailable">
-                                                        <label class="form-check-label" for="parking-available">Parking
-                                                            Available</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="pet-friendly"
-                                                            [(ngModel)]="entityData.Property.PetFriendly">
-                                                        <label class="form-check-label" for="pet-friendly">Pet
-                                                            Friendly</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="has-swimming-pool"
-                                                            [(ngModel)]="entityData.Property.HasSwimmingPool">
-                                                        <label class="form-check-label" for="has-swimming-pool">Has
-                                                            Swimming
-                                                            Pool</label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                <span style="font-size: 20px;">{{ !isExpanded ? '+' : '-' }}</span>
 
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="has-gym"
-                                                            [(ngModel)]="entityData.Property.HasGym">
-                                                        <label class="form-check-label" for="has-gym">Has Gym</label>
+                                            </div>
+                                            <div class="collapsible-content"
+                                                [@expandCollapse]="isExpanded ? 'expanded' : 'collapsed'">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="is-furnished"
+                                                                [(ngModel)]="entityData.Property.IsFurnished">
+                                                            <label class="form-check-label" for="is-furnished">Is
+                                                                Furnished</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="air-conditioning"
+                                                                [(ngModel)]="entityData.Property.AirConditioning">
+                                                            <label class="form-check-label" for="air-conditioning">Air
+                                                                Conditioning</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="is-garage"
+                                                                [(ngModel)]="entityData.Property.IsGarage">
+                                                            <label class="form-check-label"
+                                                                for="is-garage">Garage</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" id="heating"
+                                                                [(ngModel)]="entityData.Property.Heating">
+                                                            <label class="form-check-label"
+                                                                for="heating">Heating</label>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="has-fireplace"
-                                                            [(ngModel)]="entityData.Property.HasFirePlace">
-                                                        <label class="form-check-label" for="has-fireplace">Has
-                                                            Fireplace</label>
+
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="water-front"
+                                                                [(ngModel)]="entityData.Property.WaterFront">
+                                                            <label class="form-check-label"
+                                                                for="water-front">Waterfront</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="parking-available"
+                                                                [(ngModel)]="entityData.Property.ParkingAvailable">
+                                                            <label class="form-check-label"
+                                                                for="parking-available">Parking
+                                                                Available</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="pet-friendly"
+                                                                [(ngModel)]="entityData.Property.PetFriendly">
+                                                            <label class="form-check-label" for="pet-friendly">Pet
+                                                                Friendly</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="has-swimming-pool"
+                                                                [(ngModel)]="entityData.Property.HasSwimmingPool">
+                                                            <label class="form-check-label" for="has-swimming-pool">Has
+                                                                Swimming
+                                                                Pool</label>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="is-smoking-allowed"
-                                                            [(ngModel)]="entityData.Property.IsSmokingAllowed">
-                                                        <label class="form-check-label" for="is-smoking-allowed">Is
-                                                            Smoking
-                                                            Allowed</label>
+
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" id="has-gym"
+                                                                [(ngModel)]="entityData.Property.HasGym">
+                                                            <label class="form-check-label" for="has-gym">Has
+                                                                Gym</label>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="is-wheelchair-accessible"
-                                                            [(ngModel)]="entityData.Property.IsWheelchairAccessible">
-                                                        <label class="form-check-label"
-                                                            for="is-wheelchair-accessible">Is
-                                                            Wheelchair Accessible</label>
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="has-fireplace"
+                                                                [(ngModel)]="entityData.Property.HasFirePlace">
+                                                            <label class="form-check-label" for="has-fireplace">Has
+                                                                Fireplace</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="is-smoking-allowed"
+                                                                [(ngModel)]="entityData.Property.IsSmokingAllowed">
+                                                            <label class="form-check-label" for="is-smoking-allowed">Is
+                                                                Smoking
+                                                                Allowed</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="is-wheelchair-accessible"
+                                                                [(ngModel)]="entityData.Property.IsWheelchairAccessible">
+                                                            <label class="form-check-label"
+                                                                for="is-wheelchair-accessible">Is
+                                                                Wheelchair Accessible</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
                                 </div>
                             </div>
@@ -354,8 +365,7 @@
                                                 <td style="text-align: center;" colspan="100%">Table has no records.
                                                 </td>
                                             </tr>
-                                            <ng-container
-                                                *ngFor="let o of imageList; index as indexOfelement">
+                                            <ng-container *ngFor="let o of imageList; index as indexOfelement">
                                                 <tr style="text-align:left;">
                                                     <td>
                                                         <i (click)="delete()" style="font-size:smaller"

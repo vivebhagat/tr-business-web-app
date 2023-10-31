@@ -40,6 +40,16 @@
                     </div>
                     <div class="card">
                         <div class="card-body table-card">
+                            <div class="col-md-3">
+                                <div class="btn-group">
+                                    <input mdbRadio type="radio" class="btn-check" name="options" id="option1"
+                                        autocomplete="off" [checked]="true" [checked]="true" (click)="toggleList('Latest');"  />
+                                    <label class="btn btn-outline-primary" for="option1">All</label>
+                                    <input mdbRadio type="radio" class="btn-check" name="options" id="option2"
+                                        autocomplete="off" (click)="toggleList('Featured');" />
+                                    <label class="btn btn-outline-primary" for="option2">Featured</label>
+                                </div>
+                            </div><br />
                             <table class="table table-striped table-responsive no-footer" id="MainTable" role="grid"
                                 style="display:table;">
                                 <thead class="custom-thead">
@@ -76,16 +86,6 @@
                                         <td>
                                             <span>
                                                 {{o.Organization.Name}}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span>
-                                                {{o.IsFeatured}}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span>
-                                                {{o.IsActive}}
                                             </span>
                                         </td>
                                         <td>

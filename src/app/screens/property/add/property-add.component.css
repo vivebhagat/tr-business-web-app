@@ -3,7 +3,7 @@
     overflow: hidden;
   }
   
-  .strip-header {
+  .collapsible-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,7 +12,7 @@
     background-color: #f0f0f0;
   }
   
-  .strip-header h3 {
+  .collapsible-header h3 {
     margin: 0;
     margin-left: 10px;
   }
@@ -33,7 +33,7 @@
     transform: rotate(0deg);
   }
   
-  .strip-content {
+  .collapsible-content {
     padding: 0 10px;
     background-color: #fff;
   }

@@ -250,6 +250,13 @@ export class CommunityAddComponent implements OnInit {
       return;
     }
 
+    if(this.entityData.CommunityToPropertyMapList.length == 0)
+    {      
+      this.alertMessage.ErrorMessage = "Please add at least one property to create community.";
+      this.resetAlert();
+      return;
+    }
+
     const jsonString = JSON.stringify(this.entityData);
     const formData = new FormData();
     formData.append('ModelString', jsonString);

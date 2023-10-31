@@ -6,7 +6,6 @@ export class Property {
     IsPublished: boolean = false;
     Description: string = '';
     Price: number = 0;
-    Type: number = 0;
     UnitType: string = '';
     PropertyManagerId: number = 0;
     IsAvailable: boolean = false;

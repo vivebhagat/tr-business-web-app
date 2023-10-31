@@ -69,14 +69,14 @@
                                     <div class="form-left">
                                         <div class="row">
                                             <div class="col-md-4">
+                                                <br><label class="required input-label">Unit Type</label><br />
+                                                <input class="form-control" type="text"
+                                                    [(ngModel)]="entityData.Property.UnitType" [readOnly]="true" />
+                                            </div><br />
+                                            <div class="col-md-4">
                                                 <br><label class="required input-label">Name</label><br />
                                                 <input class="form-control" type="text"
                                                     [(ngModel)]="entityData.Property.Name" />
-                                            </div><br />
-                                            <div class="col-md-4">
-                                                <br><label class="required input-label">Unit Type</label><br />
-                                                <input class="form-control" type="text"
-                                                    [(ngModel)]="entityData.Property.UnitType" />
                                             </div><br />
                                             <div class="col-md-4">
                                                 <br><label class="required input-label">Price</label><br />
@@ -109,24 +109,17 @@
                                             </div><br />
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-3">
-                                                <br><label class="required input-label">Type</label><br />
-                                                <select class="form-select" [(ngModel)]="entityData.Property.Type">
-                                                    <option *ngFor="let o of propertyTypeList" [ngValue]="o.Item1">
-                                                        {{setPropertyType(o.Item1)}}</option>
-                                                </select>
-                                            </div><br />
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <br><label class="input-label">Beds</label><br />
                                                 <input class="form-control" type="number"
                                                     [(ngModel)]="entityData.Property.Bedrooms" />
                                             </div><br />
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <br><label class="input-label">Baths</label><br />
                                                 <input class="form-control" type="number"
                                                     [(ngModel)]="entityData.Property.Bathrooms" />
                                             </div><br />
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <br><label class="required input-label">Area (Sqft)</label><br />
                                                 <input class="form-control" type="number"
                                                     [(ngModel)]="entityData.Property.Area" />
@@ -170,6 +163,14 @@
                                     <div class="col-md-3">
                                         <br>
                                         <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="published"
+                                                [(ngModel)]="entityData.Property.IsPublished">
+                                            <label class="form-check-label" for="published">Is Published</label>
+                                        </div>
+                                    </div><br />
+                                    <div class="col-md-3">
+                                        <br>
+                                        <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="available"
                                                 [(ngModel)]="entityData.Property.IsAvailable">
                                             <label class="form-check-label" for="available">Is Available</label>
@@ -186,7 +187,7 @@
                                     <div class="col-md-12">
                                         <br>
                                         <div class="collapsible" [ngClass]="{ 'active': isExpanded }">
-                                            <div class="strip-header" (click)="toggleCollapse()">
+                                            <div class="collapsible-header" (click)="toggleCollapse()">
                                                 <div style="display: flex;">
                                                     <img src="https://cdn-icons-png.flaticon.com/512/9588/9588997.png"
                                                         height="30px" width="30px">
@@ -195,7 +196,7 @@
                                                 <span style="font-size: 20px;">{{ !isExpanded ? '+' : '-' }}</span>
 
                                             </div>
-                                            <div class="strip-content"
+                                            <div class="collapsible-content"
                                                 [@expandCollapse]="isExpanded ? 'expanded' : 'collapsed'">
                                                 <div class="row">
                                                     <div class="col-md-3">
@@ -333,19 +334,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal backdrop" id="popup" role="dialog" *ngIf="showModal"
+                    <div class="modal backdrop" id="popup" role="dialog" *ngIf="showUnitTypeInput"
                         style="display: block !important;">
-                        <div class="modal-dialog" style="max-width: 1000px;">
-                            <div class="modal-content" style="max-height:70vh;min-height:70vh;">
+                        <div class="modal-dialog" style="max-width: 600px;">
+                            <div class="modal-content" style="max-height:40vh;min-height:40vh;">
                                 <div class="card-header bg-info">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <h2>{{action}}</h2>
+                                            <h2>Describe unit type</h2>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="btn-group" style="float:right;">
                                                 <button class="btn btn-secondary"
-                                                    (click)="showModal = false;">Close</button>
+                                                    (click)="back()">back</button>
                                             </div>
                                         </div>
                                     </div>
@@ -364,20 +365,23 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div *ngIf="currentTab == propertyConstant.PROPERTY_IMAGES">
+                                    <div>
                                         <div class="form-horizontal">
-                                            <div class="card-body">
+                                            <div class="p-2">
+                                                <div class="col-md-12 col-sm-6">
+                                                    <label class="input-label">Unit type</label><br />
+                                                    <input class="form-control" type="text"
+                                                        [(ngModel)]="entityData.Property.UnitType" />
+                                                </div><br />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-primary" type="button" *ngIf="!enableEdit"
-                                        (click)="addFormData(currentTab)">{{action}}</button>
-                                    <button class="btn btn-primary" type="button" *ngIf="enableEdit"
-                                        (click)="editFormData(currentTab,modelIndex)">{{action}}</button>
+                                    <button class="btn btn-primary" type="button"
+                                        (click)="continue()">Continue</button>
                                     <button class="btn btn-secondary" type="button"
-                                        (click)="showModal = false">Close</button>
+                                        (click)="back()">back</button>
                                 </div>
                             </div>
                         </div>

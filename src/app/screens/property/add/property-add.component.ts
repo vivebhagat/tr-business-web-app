@@ -48,6 +48,7 @@ export class PropertyAddComponent implements OnInit {
   authData: AuthData = new AuthData;
   propertyValidate: PropertyValidate = new PropertyValidate;
   propertyManagerList: Array<any> = [];
+  showUnitTypeInput: boolean = true;
 
   @ViewChild('navbar')
   navbar!: TopBarComponent;
@@ -132,6 +133,15 @@ export class PropertyAddComponent implements OnInit {
 
   delete() {
 
+  }
+
+  continue(){
+    if(!this.entityData.Property.UnitType){
+      this.modalMessage = "Unit type is required."
+      this.resetAlert();
+      return;
+    }
+    this.showUnitTypeInput = false;
   }
 
   formAction(tabAction: string, tab: string, data: object, index: number) {
