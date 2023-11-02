@@ -16,11 +16,11 @@ export class Community {
     Url: string ='';
     IsFeatured: boolean = false;
     IsActive: boolean = false;
-    Status: any;
+    Status: string = '';
     StatusId: number = 0;
     Latitude: number = 0;
     Longitude: number = 0;
-    CommunityType: any;
+    CommunityType: string = '';
     CommunityTypeId: number = 0;
     LandArea: number = 0;
     NumberOfUnits: number = 0;

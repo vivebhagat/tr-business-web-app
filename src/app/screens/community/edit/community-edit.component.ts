@@ -286,6 +286,7 @@ export class CommunityEditComponent implements OnInit {
   }
 
   editCommunity() {
+    console.log(this.entityData.Community)
     var error = this.communityValidate.validatePrimaryDetails(this.entityData.Community)
 
     if (error.length != 0) {
